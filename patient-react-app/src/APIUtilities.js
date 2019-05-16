@@ -49,3 +49,16 @@ export function getCurrentUser() {
         method: 'GET' 
     })
 }
+
+/**
+ * Metodo para encapsular los datos de un paciente que se quiere loguear, estos datos
+ * son enviados a la api
+ * @param {*} loginRequest 
+ */
+export function loginPatient(loginRequest) {
+    return request({
+        url: API_BASE_URL + '/auth/login',
+        method: 'POST',
+        body: JSON.stringify(loginRequest)
+    });
+}
