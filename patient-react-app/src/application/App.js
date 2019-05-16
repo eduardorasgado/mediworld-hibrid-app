@@ -12,6 +12,8 @@ import Login from '../user/login/Login';
 import { Layout, notification } from 'antd';
 import Loader from '../elemental/Loader';
 import StartPage from '../elemental/StartPage';
+import AuthPage from '../elemental/AuthPage';
+
 const { Content } = Layout;
 
 
@@ -22,7 +24,8 @@ class App extends Component {
     this.state = {
       currentUser: null,
       isAuthenticated: false,
-      isLoading: true
+      // TODO: CAMBIAR A TRUE
+      isLoading: false
     }
 
     this.loadCurrentUser = this.loadCurrentUser.bind(this);
@@ -82,14 +85,21 @@ class App extends Component {
           <div className="container">
             <Switch>
               <Route exact path="/"
-              render={(props) =>
-               <StartPage {...props} /> 
-              }
+                render={(props) =>
+                  <StartPage {...props} /> 
+                }
               ></Route>
+              <Route path="/start-over-here"
+                render={(props) =>
+                  <AuthPage {...props}/>
+                }
+              >
+              </Route>
               <Route path="/login" 
-              render={(props) =>
-                <Login onLogin={this.handleLogin} {...props}></Login>
-              }>
+                render={(props) =>
+                  <Login onLogin={this.handleLogin} {...props}></Login>
+                }
+              >
               </Route>
             </Switch>
           </div>
