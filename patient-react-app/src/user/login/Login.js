@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Login.css';
 import { ACCESS_TOKEN } from '../../constants';
 
@@ -78,7 +79,44 @@ class LoginForm extends Component {
         const { getFieldDecorator } = this.props.form;
         return(
             <Form onSubmit={this.handleLoginFormSummit} className="login-form">
-                
+                <FormItem> {
+                    getFieldDecorator('username', {
+                        rules: [{required: true, message: 'Campo no puede estar vacío'}],
+                    })(
+                        <Input
+                            prefix={<Icon type="user" />}
+                            size="large"
+                            name="username"
+                            placeholder=" Usuario"
+                        >
+                        </Input>
+                    )
+                }
+                </FormItem>
+                <FormItem> {
+                    getFieldDecorator('password', {
+                        rules: [{required: true, message: 'Inserte su contraseña por favor.'}]
+                    })(
+                        <Input
+                            prefix={<Icon type="lock"/>}
+                            size="large"
+                            name="password"
+                            placeholder="Contraseña"
+                        >
+                        </Input>
+                    )
+                }
+                </FormItem>
+                <FormItem>
+                    <Button type="primary"
+                            htmlType="submit"
+                            size="large"
+                            className="login-form-button"
+                     >
+                     Entrar
+                    </Button>
+                    O <Link to="/register">Registrarse</Link>
+                </FormItem>
             </Form>
         );
     }

@@ -90,7 +90,6 @@ class App extends Component {
               render={(props) =>
                 <Login onLogin={this.handleLogin} {...props}></Login>
               }>
-
               </Route>
             </Switch>
           </div>
