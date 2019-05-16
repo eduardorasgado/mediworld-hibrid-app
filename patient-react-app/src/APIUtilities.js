@@ -22,7 +22,7 @@ const request = (options) => {
         headers
     };
 
-    options = Object.assign({}, options);
+    options = Object.assign({}, defaults, options);
 
     // se realiza la peticion
     return fetch(options.url, options)
@@ -60,5 +60,16 @@ export function loginPatient(loginRequest) {
         url: API_BASE_URL + '/auth/login',
         method: 'POST',
         body: JSON.stringify(loginRequest)
+    });
+}
+
+/**
+ * Metodo que encapsula datos de registro de un paciente y realiza la peticion a la api
+ */
+export function registerPatient(registerRequest) {
+    return request({
+        url: API_BASE_URL + '/auth/register',
+        method: 'POST',
+        body: JSON.stringify(registerRequest)
     });
 }
