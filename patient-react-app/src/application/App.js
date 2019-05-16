@@ -5,6 +5,9 @@ import { withRouter, Route, Switch } from 'react-router-dom';
 import { getCurrentUser } from '../APIUtilities';
 import './App.css';
 
+// importando componentes de logueo, registro y perfil
+import Login from '../user/login/Login';
+
 //importando los componentes material de diseño
 import { Layout } from 'antd';
 import Loader from '../elemental/Loader';
@@ -44,6 +47,11 @@ class App extends Component {
     })
   }
 
+  // CICLO DE COMPONENTES
+  componenDidMount() {
+    this.loadCurrentUser();
+  }
+
   render() {
     if(this.state.isLoading) {
       return <Loader />
@@ -58,6 +66,12 @@ class App extends Component {
                <StartPage {...props} /> 
               }
               ></Route>
+              <Route path="/login" 
+              render={(props) =>
+                <Login></Login>
+              }>
+
+              </Route>
             </Switch>
           </div>
         </Content>
