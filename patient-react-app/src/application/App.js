@@ -1,10 +1,16 @@
-import {React, Component }from 'react';
+import React, { Component }from 'react';
+//importando react router y complementos
+import { withRouter, Route, Switch } from 'react-router-dom';
 //importando las utilidades para las peticiones a la api
-import { getCurrentUser } from './APIUtilities';
+import { getCurrentUser } from '../APIUtilities';
 import './App.css';
 
 //importando los componentes material de diseño
-import Loader from 'elemental/Loader';
+import { Layout } from 'antd';
+import Loader from '../elemental/Loader';
+import StartPage from '../elemental/StartPage';
+const { Content } = Layout;
+
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +19,7 @@ class App extends Component {
     this.state = {
       currentUser: null,
       isAuthenticated: false,
-      isLoading: false
+      isLoading: true
     }
 
     this.loadCurrentUser = this.loadCurrentUser.bind(this);
@@ -37,6 +43,28 @@ class App extends Component {
       })
     })
   }
+
+  render() {
+    if(this.state.isLoading) {
+      return <Loader />
+    }
+    return (
+      <Layout className="app-container">
+        <Content class="app-content">
+          <div className="container">
+            <Switch>
+              <Route exact path="/"
+              render={(props) =>
+               <StartPage {...props} /> 
+              }
+              ></Route>
+            </Switch>
+          </div>
+        </Content>
+      </Layout> 
+    );
+  }
 }
 
-export default App;
+
+export default withRouter(App);
