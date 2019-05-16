@@ -4,7 +4,10 @@
  */
 import { API_BASE_URL, ACCESS_TOKEN } from './constants';
 
-// funcion para ensamblar el objeto que va a ser enviado por cada peticion a la api
+/**
+ * funcion para ensamblar el objeto que va a ser enviado por cada peticion a la api
+ * @param {*} options 
+ */
 const request = (options) => {
     const headers = new Headers({
         'Content-type': 'application/json',
@@ -33,6 +36,9 @@ const request = (options) => {
     );
 }
 
+/**
+ * Metodo para realizar la peticion a la api, con los datos del paciente actualmente logueado
+ */
 export function getCurrentUser() {
     if(!localStorage.getItem(ACCESS_TOKEN)) {
         return Promise.reject("No existe el token de acceso.");

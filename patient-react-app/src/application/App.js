@@ -9,7 +9,7 @@ import './App.css';
 import Login from '../user/login/Login';
 
 //importando los componentes material de diseño
-import { Layout } from 'antd';
+import { Layout, notification } from 'antd';
 import Loader from '../elemental/Loader';
 import StartPage from '../elemental/StartPage';
 const { Content } = Layout;
@@ -28,6 +28,10 @@ class App extends Component {
     this.loadCurrentUser = this.loadCurrentUser.bind(this);
   }
 
+  /**
+   * Metodo para actualizar el estado de autenticacion y obtener el usuario logueado dada
+   * la funcion getCurrentUser de las utilidades de API
+   */
   loadCurrentUser() {
     this.setState({
       isLoading: true
@@ -45,6 +49,22 @@ class App extends Component {
         isLoading: false
       })
     })
+  }
+
+  /**
+   * Usado para producir una notificacion, actualizar el usuario actual y redireccionar,
+   * una vez logueado
+   */
+  handleLogin() {
+    notification.success({
+      message: 'Mediworld App',
+      description: 'Te has logueado con éxito'
+    });
+
+    this.loadCurrentUser();
+    // TODO: Checar entre context/props
+    this.props.history.push("/");
+
   }
 
   // CICLO DE COMPONENTES
@@ -68,7 +88,7 @@ class App extends Component {
               ></Route>
               <Route path="/login" 
               render={(props) =>
-                <Login></Login>
+                <Login onLogin={this.handleLogin} {...props}></Login>
               }>
 
               </Route>
