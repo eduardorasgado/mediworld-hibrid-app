@@ -58,10 +58,29 @@ class LoginForm extends Component {
                     this.props.onLogin();
                 })
                 .catch(error => {
-                    console.log("error");
+                    if(error.status === 401) {
+                        notification.error({
+                            message: 'Mediworld App',
+                            description: 'Usuario o contraseña no son correctas. Verifique.'
+                        });
+                    } else {
+                        notification.error({
+                            message: 'Mediworld App',
+                            description: 'Disculpa, tuvimos un imprevisto, no te preocupes, intentalo más tarde'
+                        });
+                    }
                 });
             }
         });
+    }
+
+    render() {
+        const { getFieldDecorator } = this.props.form;
+        return(
+            <Form onSubmit={this.handleLoginFormSummit} className="login-form">
+                
+            </Form>
+        );
     }
 }
 
