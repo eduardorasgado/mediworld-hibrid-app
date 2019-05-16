@@ -7,6 +7,7 @@ import './App.css';
 
 // importando componentes de logueo, registro y perfil
 import Login from '../user/login/Login';
+import Register from '../user/register/Register';
 
 //importando los componentes material de diseño
 import { Layout, notification } from 'antd';
@@ -101,6 +102,8 @@ class App extends Component {
                 }
               >
               </Route>
+              <Route path="/register" component={Register} >
+              </Route> 
             </Switch>
           </div>
         </Content>
