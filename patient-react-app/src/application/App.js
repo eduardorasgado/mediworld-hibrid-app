@@ -1,6 +1,10 @@
 import {React, Component }from 'react';
-import logo from './logo.svg';
+//importando las utilidades para las peticiones a la api
+import { getCurrentUser } from './APIUtilities';
 import './App.css';
+
+//importando los componentes material de diseño
+import Loader from 'elemental/Loader';
 
 class App extends Component {
   constructor(props) {
@@ -11,6 +15,8 @@ class App extends Component {
       isAuthenticated: false,
       isLoading: false
     }
+
+    this.loadCurrentUser = this.loadCurrentUser.bind(this);
   }
 
   loadCurrentUser() {
@@ -30,10 +36,6 @@ class App extends Component {
         isLoading: false
       })
     })
-  }
-
-  getCurrentUser() {
-
   }
 }
 
