@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
+// importando constantes
+import { USERNAME_MAX_LENGTH, USERNAME_MIN_LENGTH,
+        NOMBRE_MAX_LENGTH, NOMBRE_MIN_LENGTH,
+        APELLIDOS_MAX_LENGTH, APELLIDOS_MIN_LENGTH,
+        EMAIL_MAX_LENGTH, EMAIL_MIN_LENGTH,
+        PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH,
+        GENERO_MASCULINO, GENERO_FEMENINO } from '../../constants';
+
 // Importando helpers de api utilities
 import { registerPatient } from '../../APIUtilities';
 // importando componentes de diseño de Ant
@@ -50,7 +58,8 @@ export default class Register extends Component {
     }
 
     /**
-     * Metodo que renderiza cada cambio en los campos
+     * Metodo que renderiza cada cambio en los campos, obtiene el valor del campo cada
+     * vez que se escribe y actualiza el estado y mensaje a mostrar en el campo
      * @param {*} event 
      * @param {*} validation 
      */
@@ -59,6 +68,7 @@ export default class Register extends Component {
         const inputName = target.name;
         const inputValue = target.value;
 
+        // un estado y un mensaje son agregados al objeto
         this.setState({
             [inputName]: {
                 value: inputValue,
@@ -89,6 +99,8 @@ export default class Register extends Component {
         <div className="register-content">
             <Form className="register-form" onSubmit={this.handleSubmit}>
                 <FormItem
+                    validateStatus={this.state.nombre.validateStatus}
+                    help={this.state.nombre.errorMsg}
                 >
                     <Input
                         size="large"
@@ -134,7 +146,26 @@ export default class Register extends Component {
 
   // ---------- FUNCIONES DE VALIDACION DE CAMPOS
 
-  validateName = (input) => {
-      return true;
+  /**
+   * Metodo que valida el tamaño del nombre cada vez que se registra un cambio en el campo,
+   * retorna un estado y un mensaje
+   */
+  validateName = (nombre) => {
+      if(nombre.length > NOMBRE_MAX_LENGTH) {
+          return {
+              validateStatus: 'error',
+              errorMsg: `El nombre es muy largo, necesita ser máximo de ${NOMBRE_MAX_LENGTH} caracteres`
+          }
+      } else if (nombre.length < NOMBRE_MIN_LENGTH) {
+          return {
+              validateStatus: 'error',
+              errorMsg: `El nombre es muy corto, necesita ser mínimo de ${NOMBRE_MIN_LENGTH} caracteres`
+          }
+      } else {
+          return {
+            validateStatus: 'success',
+            errorMsg: null
+          }
+      }
   }
 }
