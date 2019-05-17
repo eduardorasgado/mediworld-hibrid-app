@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { USERNAME_MAX_LENGTH, USERNAME_MIN_LENGTH,
         NOMBRE_MAX_LENGTH, NOMBRE_MIN_LENGTH,
         APELLIDOS_MAX_LENGTH, APELLIDOS_MIN_LENGTH,
-        EMAIL_MAX_LENGTH, EMAIL_MIN_LENGTH,
+        EMAIL_MAX_LENGTH, EMAIL_MIN_LENGTH, EMAIL_REGEX,
         PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH,
         GENERO_MASCULINO, GENERO_FEMENINO } from '../../constants';
 
@@ -125,8 +125,19 @@ export default class Register extends Component {
                     ></Input>
                 </FormItem>
                 <FormItem
-                    label="Email"
-                ></FormItem>
+                    validateStatus={this.state.email.validateStatus}
+                    help={this.state.email.errorMessage}
+                >
+                    <Input
+                        size="large"
+                        autoComplete="off"
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={this.state.email.value}
+                        onChange={(event) => this.HandleInputChange(event, this.validateEmail)}
+                    ></Input>
+                </FormItem>
                 <FormItem
                     label="Contraseña"
                 ></FormItem>
@@ -199,6 +210,48 @@ export default class Register extends Component {
               validateStatus: 'success',
               errorMessage: null
           }
+      }
+  }
+
+  /**
+   * Metodo que valida el size del correo electronico, cada vez que este cambia con la entrada
+   * del usuario
+   */
+  validateEmail = (email) => {
+      if(!email){
+          return {
+              validateStatus: 'error',
+              errorMessage: 'El correo no puede dejarse vacío'
+          }
+      }
+      // comprobando que efectivamente se trata de un correo de acuerdo a regular expresion
+      if(!EMAIL_REGEX.test(email)){
+          return {
+              validateStatus: 'error',
+              errorMessage: 'Por favor inserta un correo válido'
+          }
+      }
+
+      if(email.length > EMAIL_MAX_LENGTH) {
+          return {
+              validateStatus: 'error',
+              errorMessage: `Email demasiado largo, solo máximo de ${EMAIL_MAX_LENGTH} caracteres`
+          }
+      } 
+      
+      else if(email.length < EMAIL_MIN_LENGTH) {
+          return {
+              validateStatus: 'error',
+              errorMessage: `Email muy corto, el mínimo es de ${EMAIL_MIN_LENGTH} caracteres`
+          }
+      }
+
+      // si el email pasa todas las validaciones
+      else {
+        return {
+            validateStatus: 'success',
+            errorMessage: null
+        }
       }
   }
 }
