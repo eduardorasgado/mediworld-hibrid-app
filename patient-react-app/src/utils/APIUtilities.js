@@ -2,7 +2,7 @@
  * UTILIDADES RESPECTO A LAS PETICIONES O PREVIO/ DESPUES DE LA INTERACCION CON
  * LA API DE LOS USUARIOS/PACIENTES
  */
-import { API_BASE_URL, ACCESS_TOKEN } from './constants';
+import { API_BASE_URL, ACCESS_TOKEN } from '../constants';
 
 /**
  * funcion para ensamblar el objeto que va a ser enviado por cada peticion a la api

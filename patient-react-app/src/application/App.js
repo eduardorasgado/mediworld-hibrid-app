@@ -2,7 +2,7 @@ import React, { Component }from 'react';
 //importando react router y complementos
 import { withRouter, Route, Switch } from 'react-router-dom';
 //importando las utilidades para las peticiones a la api
-import { getCurrentUser } from '../APIUtilities';
+import { getCurrentUser } from '../utils/APIUtilities';
 import './App.css';
 import 'antd/dist/antd.css';
 

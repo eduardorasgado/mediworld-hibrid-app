@@ -10,7 +10,7 @@ import { USERNAME_MAX_LENGTH, USERNAME_MIN_LENGTH,
         GENERO_MASCULINO, GENERO_FEMENINO } from '../../constants';
 
 // Importando helpers de api utilities
-import { registerPatient } from '../../APIUtilities';
+import { registerPatient } from '../../utils/APIUtilities';
 // importando componentes de diseño de Ant
 import { Form, Input, Button, notification } from 'antd';
 

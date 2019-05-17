@@ -4,7 +4,7 @@ import './Login.css';
 import { ACCESS_TOKEN } from '../../constants';
 
 // importando utilidades de la api
-import { loginPatient } from '../../APIUtilities'; 
+import { loginPatient } from '../../utils/APIUtilities'; 
 
 //importando los componentes de antd
 import { Form, Input, Button, Icon, notification } from 'antd';
