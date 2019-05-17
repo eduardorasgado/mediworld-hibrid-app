@@ -100,7 +100,7 @@ export default class Register extends Component {
             <Form className="register-form" onSubmit={this.handleSubmit}>
                 <FormItem
                     validateStatus={this.state.nombre.validateStatus}
-                    help={this.state.nombre.errorMsg}
+                    help={this.state.nombre.errorMessage}
                 >
                     <Input
                         size="large"
@@ -112,8 +112,18 @@ export default class Register extends Component {
                     ></Input>
                 </FormItem>
                 <FormItem
-                    label="Apellidos"
-                ></FormItem>
+                    validateStatus={this.state.apellidos.validateStatus}
+                    help={this.state.apellidos.errorMessage}
+                >
+                    <Input
+                        size="large"
+                        autoComplete="off"
+                        name="apellidos"
+                        placeholder="Apellidos"
+                        value={this.state.apellidos.value}
+                        onChange={(event) => this.HandleInputChange(event, this.validateApellidos)}
+                    ></Input>
+                </FormItem>
                 <FormItem
                     label="Email"
                 ></FormItem>
@@ -154,17 +164,40 @@ export default class Register extends Component {
       if(nombre.length > NOMBRE_MAX_LENGTH) {
           return {
               validateStatus: 'error',
-              errorMsg: `El nombre es muy largo, necesita ser máximo de ${NOMBRE_MAX_LENGTH} caracteres`
+              errorMessage: `El nombre es muy largo, necesita ser máximo de ${NOMBRE_MAX_LENGTH} caracteres`
           }
       } else if (nombre.length < NOMBRE_MIN_LENGTH) {
           return {
               validateStatus: 'error',
-              errorMsg: `El nombre es muy corto, necesita ser mínimo de ${NOMBRE_MIN_LENGTH} caracteres`
+              errorMessage: `El nombre es muy corto, necesita ser mínimo de ${NOMBRE_MIN_LENGTH} caracteres`
           }
       } else {
           return {
             validateStatus: 'success',
-            errorMsg: null
+            errorMessage: null
+          }
+      }
+  }
+
+  /**
+   * Metodo que valida la entrada de apellidos, procura que se encuentre entre los parametros deseables,
+   * de otro modo emite un estatus y mensaje de error en el retorno
+   */
+  validateApellidos = (apellidos) => {
+      if(apellidos.length > APELLIDOS_MAX_LENGTH){
+        return {
+            validateStatus: 'error',
+            errorMessage: `La entrada es muy larga, se acepta un máximo de ${APELLIDOS_MAX_LENGTH} caracteres`
+        }
+      } else if(apellidos.length < APELLIDOS_MIN_LENGTH) {
+          return {
+              validateStatus: 'error',
+              errorMessage: `La entrada es muy corta, se acepta un mínimo de ${APELLIDOS_MIN_LENGTH} caracteres`
+          }
+      } else {
+          return {
+              validateStatus: 'success',
+              errorMessage: null
           }
       }
   }
