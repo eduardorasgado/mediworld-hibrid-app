@@ -30,6 +30,15 @@ class App extends Component {
     }
 
     this.loadCurrentUser = this.loadCurrentUser.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+
+    // configurando las notificaciones
+    notification.config({
+      placement: 'topRight',
+      top: 70,
+      // segundos
+      duration: 3
+    });
   }
 
   /**

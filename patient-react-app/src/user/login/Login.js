@@ -20,6 +20,11 @@ class Login extends Component {
 
         return(
             <div className="login-container">
+                <div className="back-button">
+                    <h4>
+                        <Link to="/start-over-here">Atrás</Link>
+                    </h4>
+                </div>
                 <h1 className="page-title">Entrar</h1>
                 <div className="login-content">
                     <AntdLoginForm onLogin={ this.props.onLogin }></AntdLoginForm>
