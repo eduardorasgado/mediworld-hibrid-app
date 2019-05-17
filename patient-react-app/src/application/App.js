@@ -4,6 +4,7 @@ import { withRouter, Route, Switch } from 'react-router-dom';
 //importando las utilidades para las peticiones a la api
 import { getCurrentUser } from '../APIUtilities';
 import './App.css';
+import 'antd/dist/antd.css';
 
 // importando componentes de logueo, registro y perfil
 import Login from '../user/login/Login';

@@ -103,6 +103,7 @@ class LoginForm extends Component {
                         rules: [{required: true, message: 'Inserte su contraseña por favor.'}]
                     })(
                         <Input
+                            type="password"
                             prefix={<Icon type="lock"/>}
                             size="large"
                             name="password"

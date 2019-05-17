@@ -50,6 +50,25 @@ export default class Register extends Component {
     }
 
     /**
+     * Metodo que renderiza cada cambio en los campos
+     * @param {*} event 
+     * @param {*} validation 
+     */
+    HandleInputChange(event, validation){
+        const target = event.target;
+        const inputName = target.name;
+        const inputValue = target.value;
+
+        this.setState({
+            [inputName]: {
+                value: inputValue,
+                ...validation(inputValue)
+            }
+        })
+
+    }
+
+    /**
      * Metodo que compreba que todos los campos esten validados correctamente previo a activar
      * el boton de registro
      */
@@ -69,6 +88,35 @@ export default class Register extends Component {
         
         <div className="register-content">
             <Form className="register-form" onSubmit={this.handleSubmit}>
+                <FormItem
+                >
+                    <Input
+                        size="large"
+                        name="nombre"
+                        autoComplete="off"
+                        placeholder="Nombre"
+                        value={this.state.nombre.value}
+                        onChange={(event) => this.HandleInputChange(event, this.validateName)}
+                    ></Input>
+                </FormItem>
+                <FormItem
+                    label="Apellidos"
+                ></FormItem>
+                <FormItem
+                    label="Email"
+                ></FormItem>
+                <FormItem
+                    label="Contraseña"
+                ></FormItem>
+                <FormItem
+                    label="Confirmar Contraseña"
+                ></FormItem>
+                <FormItem
+                    label="Fecha de nacimiento"
+                ></FormItem>
+                <FormItem
+                    label="Genero"
+                ></FormItem>
                 <FormItem>
                     <Button type="primary"
                             htmlType="submit"
@@ -82,5 +130,11 @@ export default class Register extends Component {
         </div>
       </div>
     )
+  }
+
+  // ---------- FUNCIONES DE VALIDACION DE CAMPOS
+
+  validateName = (input) => {
+      return true;
   }
 }
