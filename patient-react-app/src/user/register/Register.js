@@ -36,6 +36,9 @@ export default class Register extends Component {
             password: {
                 value: ''
             },
+            confirmPassword: {
+                value: ''
+            },
             // TODO: CHECAR COMPONENTE DISPONIBLE EN ANT DESIGN
             fechaNacimiento: {
                 value: ''
@@ -154,8 +157,20 @@ export default class Register extends Component {
                     </Input>
                 </FormItem>
                 <FormItem
-                    label="Confirmar Contraseña"
-                ></FormItem>
+                    validateStatus={this.state.confirmPassword.validateStatus}
+                    help={this.state.confirmPassword.errorMessage}
+                >
+                    <Input
+                        type="password"
+                        size="large"
+                        autoComplete="off"
+                        name="confirmPassword"
+                        placeholder="Confirmar Contraseña"
+                        value={this.state.confirmPassword.value}
+                        onChange={(event) => this.HandleInputChange(event, this.validateConfirmPassword)}
+                    >
+                    </Input>
+                </FormItem>
                 <FormItem
                     label="Fecha de nacimiento"
                 ></FormItem>
@@ -282,6 +297,26 @@ export default class Register extends Component {
           return {
               validateStatus: 'success',
               errorMessage: null
+          }
+      }
+  }
+
+  /**
+   * validacion de la coincidencia de las dos contraseñas
+   * TODO: Si la contraseña de confirmacion es escrita primero y después se escribe la contraseña normal
+   * este cambio no es detectado por la contraseña de confirmacion y por tanto no cambia el mensaje de error de 
+   * no coincidencia
+   */
+  validateConfirmPassword = (confirmPassword) => {
+      if(!(confirmPassword === this.state.password.value)) {
+          return {
+              validateStatus: 'error',
+              errorMessage: 'Las contraseñas no coinciden'
+          }
+      } else {
+          return {
+            validateStatus: 'success',
+            errorMessage: null
           }
       }
   }
