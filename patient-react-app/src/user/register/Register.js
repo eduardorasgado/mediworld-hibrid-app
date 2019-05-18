@@ -103,8 +103,17 @@ export default class Register extends Component {
      * @param {*} validation 
      */
     handleDateInput(date, format, validation) {
-        
-        console.log(date.format());
+        let dateVal = ''
+        if(date) {
+             dateVal = date.format();
+        }
+
+        this.setState({
+            fechaNacimiento: {
+                value: dateVal,
+                ...validation(date)
+            }
+        });
     }
 
     /**
@@ -199,6 +208,8 @@ export default class Register extends Component {
                 </FormItem>
                 <FormItem
                     label="Fecha de nacimiento"
+                    validateStatus={this.state.fechaNacimiento.validateStatus}
+                    help={this.state.fechaNacimiento.errorMessage}
                 >
                     <DatePicker 
                         defaultValue={moment(moment(), DATE_FORMAT)} 
@@ -362,6 +373,19 @@ export default class Register extends Component {
   }
 
   validateFechaNacimiento = (fechaNacimiento) => {
+      if(!fechaNacimiento) {
+          return {
+              validateStatus: 'error',
+              errorMessage: 'La fecha de nacimiento no puede estar vacía'
+          }
+      }
+      // comprobando que la fecha no sobrepase del dia de hoy
+      if(moment(fechaNacimiento.format()).isAfter(moment().format())) {
+        return {
+            validateStatus: 'error',
+            errorMessage: 'La fecha de nacimiento es invalida'
+        }
+      }
       return {
           validateStatus: 'success',
           errorMessage: null
