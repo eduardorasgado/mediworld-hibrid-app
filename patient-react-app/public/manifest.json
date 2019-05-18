@@ -4,12 +4,12 @@
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "16x16",
+      "sizes": "150x150",
       "type": "image/x-icon"
     },
     {
-      "src": "/icon.png",
-      "sizes": "124x124",
+      "src": "/mwicon.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
