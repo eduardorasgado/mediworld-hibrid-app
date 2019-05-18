@@ -139,8 +139,20 @@ export default class Register extends Component {
                     ></Input>
                 </FormItem>
                 <FormItem
-                    label="Contraseña"
-                ></FormItem>
+                    validateStatus={this.state.password.validateStatus}
+                    help={this.state.password.errorMessage}
+                >
+                    <Input
+                        type="password"
+                        size="large"
+                        autoComplete="off"
+                        name="password"
+                        placeholder="Contraseña"
+                        value={this.state.password.value}
+                        onChange={(event) => this.HandleInputChange(event, this.validatePassword)}
+                    >
+                    </Input>
+                </FormItem>
                 <FormItem
                     label="Confirmar Contraseña"
                 ></FormItem>
@@ -252,6 +264,25 @@ export default class Register extends Component {
             validateStatus: 'success',
             errorMessage: null
         }
+      }
+  }
+
+  validatePassword = (password) => {
+      if(password.length > PASSWORD_MAX_LENGTH) {
+          return {
+              validateStatus: 'error',
+              errorMessage: `Tu contraseña no debe exceder el máximo de ${PASSWORD_MAX_LENGTH} caracteres`
+          }
+      } else if(password.length < PASSWORD_MIN_LENGTH) {
+          return {
+              validateStatus: 'error',
+              errorMessage: `Tu contraseña debe de tener un mínimo de ${PASSWORD_MIN_LENGTH} caracteres`
+          }
+      } else {
+          return {
+              validateStatus: 'success',
+              errorMessage: null
+          }
       }
   }
 }
