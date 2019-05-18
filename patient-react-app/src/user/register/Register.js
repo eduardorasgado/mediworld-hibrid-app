@@ -7,15 +7,31 @@ import { USERNAME_MAX_LENGTH, USERNAME_MIN_LENGTH,
         APELLIDOS_MAX_LENGTH, APELLIDOS_MIN_LENGTH,
         EMAIL_MAX_LENGTH, EMAIL_MIN_LENGTH, EMAIL_REGEX,
         PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH,
+        DATE_FORMAT,
         GENERO_MASCULINO, GENERO_FEMENINO } from '../../constants';
 
 // Importando helpers de api utilities
 import { registerPatient } from '../../utils/APIUtilities';
 // importando componentes de diseño de Ant
-import { Form, Input, Button, notification } from 'antd';
+import { Form, Input, Button, notification, DatePicker } from 'antd';
+
+// formato local para el lenguaje componente DatePicker ant design
+import locale from 'antd/lib/date-picker/locale/es_ES'
+
+// manipulacion de formatos de tiempo
+import moment from 'moment';
+import 'moment/locale/es';
 
 const FormItem = Form.Item;
 
+/**
+ * @class Register
+ * @description Componente de Registro de un usuario de tipo paciente, nuevo, captura de todos los datos necesarios
+ * para la creacion de la cuenta nueva
+ * 
+ *  @author Eduardo Rasgado Ruiz
+ * @version 1.0
+ */
 export default class Register extends Component {
     constructor(props) {
         super(props);
@@ -39,7 +55,6 @@ export default class Register extends Component {
             confirmPassword: {
                 value: ''
             },
-            // TODO: CHECAR COMPONENTE DISPONIBLE EN ANT DESIGN
             fechaNacimiento: {
                 value: ''
             },
@@ -78,7 +93,18 @@ export default class Register extends Component {
                 ...validation(inputValue)
             }
         })
+    }
 
+    /**
+     * Maneja la entrada de fecha de nacimiento, manipulando
+     * un objeto de tipo Moment.moment, lo valida y guarda
+     * @param {*} date 
+     * @param {*} format 
+     * @param {*} validation 
+     */
+    handleDateInput(date, format, validation) {
+        
+        console.log(date.format());
     }
 
     /**
@@ -173,7 +199,18 @@ export default class Register extends Component {
                 </FormItem>
                 <FormItem
                     label="Fecha de nacimiento"
-                ></FormItem>
+                >
+                    <DatePicker 
+                        defaultValue={moment(moment(), DATE_FORMAT)} 
+                        format={DATE_FORMAT} 
+                        locale={locale}
+                        size="large"
+                        name="fechaNacimiento"
+                        onChange={(date, format) =>
+                            this.handleDateInput(date, format, this.validateFechaNacimiento)
+                        }
+                    />
+                </FormItem>
                 <FormItem
                     label="Genero"
                 ></FormItem>
@@ -282,6 +319,9 @@ export default class Register extends Component {
       }
   }
 
+  /**
+   * Validacion de password basada en un minimo y maximos de tamaño asi como de una expresion regular
+   */
   validatePassword = (password) => {
       if(password.length > PASSWORD_MAX_LENGTH) {
           return {
@@ -318,6 +358,13 @@ export default class Register extends Component {
             validateStatus: 'success',
             errorMessage: null
           }
+      }
+  }
+
+  validateFechaNacimiento = (fechaNacimiento) => {
+      return {
+          validateStatus: 'success',
+          errorMessage: null
       }
   }
 }

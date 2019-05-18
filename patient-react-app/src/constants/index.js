@@ -4,6 +4,8 @@ export const ACCESS_TOKEN = 'accessToken';
 
 export const EMAIL_REGEX = RegExp('[^@ ]+@[^@ ]+\\.[^@ ]+');
 
+export const DATE_FORMAT = 'DD/MM/YYYY';
+
 export const USERNAME_MIN_LENGTH = 3;
 export const USERNAME_MAX_LENGTH = 20;
 
