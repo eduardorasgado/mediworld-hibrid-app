@@ -65,6 +65,12 @@ export default class Register extends Component {
                 validateStatus: ''
             }
         }
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.HandleInputChange = this.HandleInputChange.bind(this);
+        this.handleDateInput = this.handleDateInput.bind(this);
+        this.isFormInvalid = this.isFormInvalid.bind(this);
+        
     }
 
     /**
