@@ -71,7 +71,19 @@ export default class Register extends Component {
      * Metodo que solicita la funcion register patient de api utilities y pasa los datos
      * previamente validados para hacer el request a la API
      */
-    handleSubmit() {
+    handleSubmit(event) {
+        // evita que se haga la peticion e intente recargarse la pagina
+        event.preventDefault();
+
+        const registerRequest = {
+            // TODO: FALTA CAMPO USERNAME
+            nombre: this.state.nombre.value,
+            apellidos: this.state.apellidos.value,
+            fechaNacimiento: this.state.fechaNacimiento.value,
+            genero: this.state.genero.value,
+            email: this.state.email.value,
+            password: this.state.password.value
+        }
         notification.success({
             message: "Mediworld App Registration",
             description: "Se ha registrado exitosamente"
@@ -172,6 +184,20 @@ export default class Register extends Component {
                         value={this.state.apellidos.value}
                         onChange={(event) => this.HandleInputChange(event, this.validateApellidos)}
                     ></Input>
+                </FormItem>
+                <FormItem
+                    validateStatus={this.state.username.validateStatus}
+                    help={this.state.username.errorMessage}
+                >
+                    <Input
+                        size="large"
+                        autoComplete="off"
+                        name="username"
+                        Placeholder="Nombre de usuario"
+                        value={this.state.username.value}
+                        onChange={(event) => this.HandleInputChange(event, this.validateUsername)}
+                    >
+                    </Input>
                 </FormItem>
                 <FormItem
                     validateStatus={this.state.email.validateStatus}
@@ -309,6 +335,26 @@ export default class Register extends Component {
       }
   }
 
+  validateUsername = (username) => {
+      // TODO VALIDAR LA DISPONIBILIDAD DEL USERNAME
+      if(username.length > USERNAME_MAX_LENGTH) {
+          return {
+              validateStatus: 'error',
+              errorMessage: `Debe ser menor a ${USERNAME_MAX_LENGTH} caracteres`
+          }
+      } else if(username.length < USERNAME_MIN_LENGTH) {
+          return {
+              validateStatus: 'error',
+              errorMessage: `Debe ser mayor a ${USERNAME_MIN_LENGTH} caracteres`
+          }
+      } else {
+          return {
+              validateStatus: 'sucess',
+              errorMessage: null
+          }
+      }
+  }
+
   /**
    * Metodo que valida el size del correo electronico, cada vez que este cambia con la entrada
    * del usuario
@@ -327,6 +373,8 @@ export default class Register extends Component {
               errorMessage: 'Por favor inserta un correo válido'
           }
       }
+
+      // TODO: VALIDAR LA DISPONIBILIDAD DEL EMAIL
 
       if(email.length > EMAIL_MAX_LENGTH) {
           return {
