@@ -76,7 +76,7 @@ export default class Register extends Component {
         event.preventDefault();
 
         const registerRequest = {
-            // TODO: FALTA CAMPO USERNAME
+            username: this.state.username.value,
             nombre: this.state.nombre.value,
             apellidos: this.state.apellidos.value,
             fechaNacimiento: this.state.fechaNacimiento.value,
@@ -84,6 +84,20 @@ export default class Register extends Component {
             email: this.state.email.value,
             password: this.state.password.value
         }
+
+        registerPatient(registerRequest)
+        .then(response => {
+            notification.success({
+                message: 'Voilá',
+                description: `${this.state.nombre.value} te has registrado exitosamente`
+            });
+        })
+        .catch(error => {
+            notification.error({
+                message: 'Ops!',
+                description: 'Algo salió mal en tu registro, intenta más tarde: ' || error.message
+            });
+        });
         notification.success({
             message: "Mediworld App Registration",
             description: "Se ha registrado exitosamente"
