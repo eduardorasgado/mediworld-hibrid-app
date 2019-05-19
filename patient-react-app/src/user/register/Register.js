@@ -13,7 +13,8 @@ import { USERNAME_MAX_LENGTH, USERNAME_MIN_LENGTH,
 // Importando helpers de api utilities
 import { registerPatient } from '../../utils/APIUtilities';
 // importando componentes de diseño de Ant
-import { Form, Input, Button, notification, DatePicker } from 'antd';
+import { Form, Input, Button, notification, DatePicker,
+        Radio } from 'antd';
 
 // formato local para el lenguaje componente DatePicker ant design
 import locale from 'antd/lib/date-picker/locale/es_ES'
@@ -23,6 +24,7 @@ import moment from 'moment';
 import 'moment/locale/es';
 
 const FormItem = Form.Item;
+const RadioGroup = Radio.Group;
 
 /**
  * @class Register
@@ -135,7 +137,8 @@ export default class Register extends Component {
         <h1 className="page-title">Crear una cuenta nueva</h1>
         
         <div className="register-content">
-            <Form className="register-form" onSubmit={this.handleSubmit}>
+            <Form className="register-form" onSubmit={this.handleSubmit} 
+                    method="post">
                 <FormItem
                     validateStatus={this.state.nombre.validateStatus}
                     help={this.state.nombre.errorMessage}
@@ -224,7 +227,17 @@ export default class Register extends Component {
                 </FormItem>
                 <FormItem
                     label="Genero"
-                ></FormItem>
+                >
+                    <RadioGroup name="genero"
+                                value={this.state.genero.value}
+                                onChange={(event) =>
+                                    this.HandleInputChange(event, this.validateGenre)
+                                }
+                                >
+                        <Radio value={GENERO_MASCULINO}>Hombre</Radio>
+                        <Radio value={GENERO_FEMENINO}>Mujer</Radio>
+                    </RadioGroup>
+                </FormItem>
                 <FormItem>
                     <Button type="primary"
                             htmlType="submit"
@@ -385,6 +398,19 @@ export default class Register extends Component {
             validateStatus: 'error',
             errorMessage: 'La fecha de nacimiento es invalida'
         }
+      }
+      return {
+          validateStatus: 'success',
+          errorMessage: null
+      }
+  }
+
+  validateGenre = (genero) => {
+      if(!genero) {
+          return {
+              validateStatus: 'error',
+              errorMessage: 'Elige el género'
+          }
       }
       return {
           validateStatus: 'success',

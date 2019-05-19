@@ -83,7 +83,8 @@ class LoginForm extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         return(
-            <Form onSubmit={this.handleLoginFormSummit} className="login-form">
+            <Form onSubmit={this.handleLoginFormSummit} className="login-form"
+                method="post">
                 <FormItem> {
                     getFieldDecorator('username', {
                         rules: [{required: true, message: 'Campo no puede estar vacío'}],
