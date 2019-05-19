@@ -61,7 +61,8 @@ export default class Register extends Component {
                 value: ''
             },
             genero: {
-                value: ''
+                value: '',
+                validateStatus: ''
             }
         }
     }
@@ -123,7 +124,15 @@ export default class Register extends Component {
      * el boton de registro
      */
     isFormInvalid() {
-        return false;
+        return !(
+            this.state.nombre.validateStatus === 'success' &&
+            this.state.apellidos.validateStatus === 'success' &&
+            this.state.email.validateStatus === 'success' &&
+            this.state.password.validateStatus === 'success' &&
+            this.state.confirmPassword.validateStatus === 'success' &&
+            this.state.fechaNacimiento.validateStatus === 'success' &&
+            this.state.genero.validateStatus === 'success'
+        );
     }
 
   render() {
@@ -137,8 +146,7 @@ export default class Register extends Component {
         <h1 className="page-title">Crear una cuenta nueva</h1>
         
         <div className="register-content">
-            <Form className="register-form" onSubmit={this.handleSubmit} 
-                    method="post">
+            <Form className="register-form" onSubmit={this.handleSubmit}>
                 <FormItem
                     validateStatus={this.state.nombre.validateStatus}
                     help={this.state.nombre.errorMessage}
