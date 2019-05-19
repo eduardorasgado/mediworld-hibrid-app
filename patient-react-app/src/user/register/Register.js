@@ -95,7 +95,7 @@ export default class Register extends Component {
         .then(response => {
             notification.success({
                 message: 'Voilá',
-                description: `${this.state.nombre.value} te has registrado exitosamente`
+                description: `${this.state.nombre.value}: ${response.message}`
             });
         })
         .catch(error => {
@@ -103,10 +103,6 @@ export default class Register extends Component {
                 message: 'Ops!',
                 description: 'Algo salió mal en tu registro, intenta más tarde: ' || error.message
             });
-        });
-        notification.success({
-            message: "Mediworld App Registration",
-            description: "Se ha registrado exitosamente"
         });
     }
 
@@ -213,7 +209,7 @@ export default class Register extends Component {
                         size="large"
                         autoComplete="off"
                         name="username"
-                        Placeholder="Nombre de usuario"
+                        placeholder="Nombre de usuario"
                         value={this.state.username.value}
                         onChange={(event) => this.HandleInputChange(event, this.validateUsername)}
                     >
@@ -369,7 +365,7 @@ export default class Register extends Component {
           }
       } else {
           return {
-              validateStatus: 'sucess',
+              validateStatus: 'success',
               errorMessage: null
           }
       }

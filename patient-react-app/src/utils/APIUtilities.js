@@ -11,11 +11,12 @@ import { API_BASE_URL, ACCESS_TOKEN } from '../constants';
 const request = (options) => {
     const headers = new Headers({
         'Content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
     });
     let token = localStorage.getItem(ACCESS_TOKEN);
     if(token) {
         // para mandar el token de autorizacion que se recibio tras haber logueado correctamente
-        headers.append('Autorization', 'Bearer'+token);
+        headers.append('Authorization', 'Bearer '+token);
     }
 
     const defaults = {
@@ -70,6 +71,7 @@ export function registerPatient(registerRequest) {
     return request({
         url: API_BASE_URL + '/auth/register',
         method: 'POST',
+        mode: 'cors',
         body: JSON.stringify(registerRequest)
     });
 }
