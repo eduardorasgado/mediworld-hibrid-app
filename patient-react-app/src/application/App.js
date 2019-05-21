@@ -16,6 +16,7 @@ import Loader from '../elemental/Loader';
 import StartPage from '../elemental/StartPage';
 import AuthPage from '../elemental/AuthPage';
 import NotFound from '../elemental/error/NotFound';
+import NotAuthenticated from '../elemental/AuthBased/NotAuthenticated';
 
 const { Content } = Layout;
 
@@ -77,7 +78,6 @@ class App extends Component {
     });
 
     this.loadCurrentUser();
-    // TODO: Checar entre context/props
     this.props.history.push("/");
 
   }
@@ -96,25 +96,30 @@ class App extends Component {
         <Content class="app-content">
           <div className="container">
             <Switch>
+              
               <Route exact path="/"
                 render={(props) =>
                   <StartPage {...props} /> 
                 }
               ></Route>
-              <Route path="/start-over-here"
-                render={(props) =>
-                  <AuthPage {...props}/>
-                }
+              
+              <NotAuthenticated
+                path="/start-over-here"
+                component={AuthPage}
+                isAuthenticated={this.state.isAuthenticated}
+              ></NotAuthenticated>
+              
+              <NotAuthenticated
+                path="/login"
+                component={Login}
+                isAuthenticated={this.state.isAuthenticated}
+                onLogin={this.handleLogin}
               >
-              </Route>
-              <Route path="/login" 
-                render={(props) =>
-                  <Login onLogin={this.handleLogin} {...props}></Login>
-                }
-              >
-              </Route>
+              </NotAuthenticated>
+              
               <Route path="/register" component={Register} >
               </Route>
+              
               <Route component={NotFound}></Route>
             </Switch>
           </div>
