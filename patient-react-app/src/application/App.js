@@ -114,11 +114,12 @@ class App extends Component {
                 component={Login}
                 isAuthenticated={this.state.isAuthenticated}
                 onLogin={this.handleLogin}
-              >
-              </NotAuthenticated>
+              ></NotAuthenticated>
               
-              <Route path="/register" component={Register} >
-              </Route>
+              <NotAuthenticated
+                path="/register"
+                component={Register}
+              ></NotAuthenticated>
               
               <Route component={NotFound}></Route>
             </Switch>
