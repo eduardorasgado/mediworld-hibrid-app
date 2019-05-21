@@ -93,7 +93,7 @@ class App extends Component {
     }
     return (
       <Layout className="app-container">
-        <Content class="app-content">
+        <Content className="app-content">
           <div className="container">
             <Switch>
               

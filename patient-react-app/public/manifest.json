@@ -3,7 +3,7 @@
   "name": "Mediworld",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "/mwfavicon.ico",
       "sizes": "150x150",
       "type": "image/x-icon"
     },
