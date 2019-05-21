@@ -15,6 +15,7 @@ import { Layout, notification } from 'antd';
 import Loader from '../elemental/Loader';
 import StartPage from '../elemental/StartPage';
 import AuthPage from '../elemental/AuthPage';
+import NotFound from '../elemental/error/NotFound';
 
 const { Content } = Layout;
 
@@ -113,7 +114,8 @@ class App extends Component {
               >
               </Route>
               <Route path="/register" component={Register} >
-              </Route> 
+              </Route>
+              <Route component={NotFound}></Route>
             </Switch>
           </div>
         </Content>
