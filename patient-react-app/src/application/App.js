@@ -9,6 +9,7 @@ import 'antd/dist/antd.css';
 // importando componentes de logueo, registro y perfil
 import Login from '../user/login/Login';
 import Register from '../user/register/Register';
+import Profile from '../user/profile/Profile';
 
 //importando los componentes material de diseño
 import { Layout, notification } from 'antd';
@@ -17,6 +18,7 @@ import StartPage from '../elemental/StartPage';
 import AuthPage from '../elemental/AuthPage';
 import NotFound from '../elemental/error/NotFound';
 import NotAuthenticated from '../elemental/AuthBased/NotAuthenticated';
+import Authenticated from '../elemental/AuthBased/Authenticated';
 
 const { Content } = Layout;
 
@@ -120,6 +122,11 @@ class App extends Component {
                 path="/register"
                 component={Register}
               ></NotAuthenticated>
+
+              <Authenticated
+                path="/paciente/me"
+                component={Profile}
+              ></Authenticated>
               
               <Route component={NotFound}></Route>
             </Switch>

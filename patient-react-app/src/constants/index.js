@@ -1,13 +1,13 @@
-export const API_BASE_URL = 'http://localhost8080/api';
+export const API_BASE_URL = 'http://localhost:8080/api';
 
-export const ACCESS_TOKEN = 'accessToken';
+export let ACCESS_TOKEN = 'accessToken';
 
 export const EMAIL_REGEX = RegExp('[^@ ]+@[^@ ]+\\.[^@ ]+');
 
 export const DATE_FORMAT = 'DD/MM/YYYY';
 
 export const USERNAME_MIN_LENGTH = 3;
-export const USERNAME_MAX_LENGTH = 20;
+export const USERNAME_MAX_LENGTH = 30;
 
 export const EMAIL_MIN_LENGTH = 9;
 export const EMAIL_MAX_LENGTH = 50;
