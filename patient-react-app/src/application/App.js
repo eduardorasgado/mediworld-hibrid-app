@@ -66,7 +66,6 @@ class App extends Component {
       this.setState({
         isLoading: false
       })
-      console.log(error);
     })
   }
 
@@ -129,6 +128,8 @@ class App extends Component {
                 path="/paciente/me"
                 component={Profile}
                 isAuthenticated={this.state.isAuthenticated}
+                currentUser={this.state.currentUser}
+                loadCurrentUser={this.loadCurrentUser}
               ></Authenticated>
               
               <Route component={NotFound}></Route>

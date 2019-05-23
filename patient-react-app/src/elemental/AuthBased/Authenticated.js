@@ -1,11 +1,15 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const Authenticated = ({component: Component, isAuthenticated}) => (
+const Authenticated = ({component: Component, isAuthenticated, 
+                        currentUser, loadCurrentUser}) => (
     <Route
         render={(props) =>
             isAuthenticated ?
-            <Component {...props}></Component>
+            <Component currentUser={currentUser} 
+                        loadCurrentUser={loadCurrentUser} 
+                        {...props}>
+            </Component>
             :
             <Redirect to={{
                 pathname:'/login',
