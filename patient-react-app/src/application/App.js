@@ -66,6 +66,7 @@ class App extends Component {
       this.setState({
         isLoading: false
       })
+      console.log(error);
     })
   }
 
@@ -74,13 +75,13 @@ class App extends Component {
    * una vez logueado
    */
   handleLogin() {
+    
+    this.loadCurrentUser();
     notification.success({
       message: 'Mediworld App',
       description: 'Te has logueado con éxito'
     });
-
-    this.loadCurrentUser();
-    this.props.history.push("/");
+    this.props.history.push("/paciente/me");
 
   }
 
@@ -121,11 +122,13 @@ class App extends Component {
               <NotAuthenticated
                 path="/register"
                 component={Register}
+                isAuthenticated={this.state.isAuthenticated}
               ></NotAuthenticated>
 
               <Authenticated
                 path="/paciente/me"
                 component={Profile}
+                isAuthenticated={this.state.isAuthenticated}
               ></Authenticated>
               
               <Route component={NotFound}></Route>

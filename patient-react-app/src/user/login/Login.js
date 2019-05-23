@@ -60,8 +60,6 @@ class LoginForm extends Component {
                 .then(response => {
                     // recibimos el token de la api y se guarda en el local storage
                     localStorage.setItem(ACCESS_TOKEN, response.accessToken);
-                    console.log(response.accessToken)
-                    console.log(ACCESS_TOKEN);
                     
                     // se manda a llamar el metodo del padre: App
                     this.props.onLogin();

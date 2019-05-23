@@ -14,9 +14,11 @@ const request = (options) => {
         'Content-type': 'application/json',
     });
     let token = localStorage.getItem(ACCESS_TOKEN);
+
     if(token) {
         // para mandar el token de autorizacion que se recibio tras haber logueado correctamente
         headers.append('Authorization', 'Bearer '+token);
+        console.log("token bearer: "+token);
     }
 
     const defaults = {

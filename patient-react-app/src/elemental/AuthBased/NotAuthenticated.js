@@ -18,7 +18,7 @@ const NotAuthenticated = ({component:Component, isAuthenticated,
             isAuthenticated ? (
                 <Redirect
                     to={{
-                        pathname: '/',
+                        pathname: '/paciente/me',
                         state: {from: props.location}
                     }}
                 ></Redirect>

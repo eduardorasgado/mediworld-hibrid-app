@@ -1,6 +1,6 @@
 export const API_BASE_URL = 'http://localhost:8080/api';
 
-export let ACCESS_TOKEN = 'accessToken';
+export const ACCESS_TOKEN = 'accessToken';
 
 export const EMAIL_REGEX = RegExp('[^@ ]+@[^@ ]+\\.[^@ ]+');
 
