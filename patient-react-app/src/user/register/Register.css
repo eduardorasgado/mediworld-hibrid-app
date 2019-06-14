@@ -1,8 +1,19 @@
-.register-container {
+div.register-container {
     max-width: 420px;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 20px;
 }
+
+div.register-container label{
+    color: white;
+    font-size: 1rem;
+}
+
+div.register-container div{
+    color: white;
+    font-size: 1rem;
+}
+
 
 .register-form-button {
     width: 100%;

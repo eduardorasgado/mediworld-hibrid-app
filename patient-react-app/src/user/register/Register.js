@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import './Register.css';
 
 // importando constantes
 import { USERNAME_MAX_LENGTH, USERNAME_MIN_LENGTH,
@@ -101,7 +102,7 @@ export default class Register extends Component {
         .catch(error => {
             notification.error({
                 message: 'Ops!',
-                description: 'Algo salió mal en tu registro, intenta más tarde: ' || error.message
+                description: 'Algo salió mal en tu registro, intenta más tarde' || error.message
             });
         });
     }
@@ -295,6 +296,7 @@ export default class Register extends Component {
                             className="register-form-button"
                             disabled={this.isFormInvalid()}
                     >Registrarse</Button>
+                    <br></br>
                     Ya está registrado? <Link to="/login">Entrar</Link>
                 </FormItem>
             </Form>
