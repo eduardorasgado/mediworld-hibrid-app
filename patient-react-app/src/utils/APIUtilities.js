@@ -60,7 +60,7 @@ export function getCurrentUser() {
  */
 export function loginPatient(loginRequest) {
     return request({
-        url: API_BASE_URL + '/auth/login',
+        url: API_BASE_URL + '/paciente/auth/login',
         method: 'POST',
         body: JSON.stringify(loginRequest)
     });
@@ -71,7 +71,7 @@ export function loginPatient(loginRequest) {
  */
 export function registerPatient(registerRequest) {
     return request({
-        url: API_BASE_URL + '/auth/register',
+        url: API_BASE_URL + '/paciente/auth/register',
         method: 'POST',
         body: JSON.stringify(registerRequest)
     });
