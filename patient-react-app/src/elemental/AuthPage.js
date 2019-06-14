@@ -10,7 +10,7 @@ class AuthPage extends Component {
                 <p>
                     <span className="tip"><Link to="/login"><Avatar size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" /> Iniciar Sesión</Link></span>
                     <br></br><br></br>
-                    <span className="tip"><Link to="/">Registrarse con tu cuenta Google</Link></span>
+                    <span className="tip"><Link to="/"><span className="tiptext">Registrarse con tu cuenta Google</span></Link></span>
                     <br></br><br></br>
                     <span className="tip"><Link to="/register"><Avatar shape="square" size="small" icon="user" /> Crear una cuenta</Link></span>
                     <br></br><br></br>

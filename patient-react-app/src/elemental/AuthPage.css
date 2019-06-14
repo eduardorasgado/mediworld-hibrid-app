@@ -1,5 +1,5 @@
 div.container4 {
-    height: 40em;
+    height: 44em;
     position: relative }
 div.container4 p {
     margin: 0;
@@ -17,4 +17,8 @@ div.container4 .tip{
     border-radius: 3px;
     padding: 8px;
     
+}
+
+div.container4 .tip a {
+    color:white;
 }
