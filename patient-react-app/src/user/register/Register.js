@@ -94,10 +94,13 @@ export default class Register extends Component {
 
         registerPatient(registerRequest)
         .then(response => {
+            this.props.history.push("/login");
+
             notification.success({
                 message: 'Voilá',
                 description: `${this.state.nombre.value}: ${response.message}`
             });
+            
         })
         .catch(error => {
             notification.error({
