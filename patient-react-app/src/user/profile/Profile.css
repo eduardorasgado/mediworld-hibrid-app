@@ -1,3 +1,18 @@
-.profile-container {
-    color: white
+div.profile-container {
+    color: white;
+    height: 44em;
+    position: relative;
+}
+
+div.profile-container h2, div, svg {
+    color: white;
+    
+}
+
+div.profile-container button {
+    margin: 40px;
+    
+    background-color: transparent;
+    color: white;
+    
 }
