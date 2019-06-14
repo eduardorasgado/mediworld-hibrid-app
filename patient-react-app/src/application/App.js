@@ -19,6 +19,7 @@ import AuthPage from '../elemental/AuthPage';
 import NotFound from '../elemental/error/NotFound';
 import NotAuthenticated from '../elemental/AuthBased/NotAuthenticated';
 import Authenticated from '../elemental/AuthBased/Authenticated';
+import { ACCESS_TOKEN } from '../constants';
 
 const { Content } = Layout;
 
@@ -44,6 +45,10 @@ class App extends Component {
       // segundos
       duration: 3
     });
+
+    if(localStorage.getItem(ACCESS_TOKEN) !== 'accesToken'){
+      this.loadCurrentUser();
+    }
   }
 
   /**
@@ -85,9 +90,15 @@ class App extends Component {
   }
 
   // CICLO DE COMPONENTES
-  componenDidMount() {
+  componentDidMount() {
     this.loadCurrentUser();
   }
+
+  componentWillMount() {
+    this.loadCurrentUser();
+  }
+
+ 
 
   render() {
     if(this.state.isLoading) {
@@ -104,12 +115,20 @@ class App extends Component {
                   <StartPage {...props} /> 
                 }
               ></Route>
-              
+
               <NotAuthenticated
                 path="/start-over-here"
                 component={AuthPage}
                 isAuthenticated={this.state.isAuthenticated}
               ></NotAuthenticated>
+
+              <Authenticated
+                path="/paciente/me"
+                component={Profile}
+                isAuthenticated={this.state.isAuthenticated}
+                currentUser={this.state.currentUser}
+                loadCurrentUser={this.loadCurrentUser}
+              ></Authenticated>
               
               <NotAuthenticated
                 path="/login"
@@ -123,14 +142,6 @@ class App extends Component {
                 component={Register}
                 isAuthenticated={this.state.isAuthenticated}
               ></NotAuthenticated>
-
-              <Authenticated
-                path="/paciente/me"
-                component={Profile}
-                isAuthenticated={this.state.isAuthenticated}
-                currentUser={this.state.currentUser}
-                loadCurrentUser={this.loadCurrentUser}
-              ></Authenticated>
               
               <Route component={NotFound}></Route>
             </Switch>

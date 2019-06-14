@@ -1,4 +1,5 @@
 import React from 'react';
+import { ACCESS_TOKEN } from '../../constants';
 
 import { Route,
         Redirect } from 'react-router-dom';
@@ -15,7 +16,7 @@ const NotAuthenticated = ({component:Component, isAuthenticated,
 
     <Route
         render={(props) =>
-            isAuthenticated ? (
+            (localStorage.getItem(ACCESS_TOKEN) !== null) ? (
                 <Redirect
                     to={{
                         pathname: '/paciente/me',
