@@ -123,7 +123,7 @@ class LoginForm extends Component {
                      >
                      Entrar
                     </Button>
-                    O <Link to="/register">Registrarse</Link>
+                    o también puede <Link to="/register">Registrarse</Link>
                 </FormItem>
             </Form>
 

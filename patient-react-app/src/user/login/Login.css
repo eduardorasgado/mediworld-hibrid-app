@@ -3,7 +3,15 @@
     margin: 0 auto;
     margin: 0 auto;
     margin-top: 40px;
+    height: 44em;
+    position: relative
 }
+
+.login-container div {
+    color: white;
+    font-size: 1rem;
+}
+
 
 .login-form-button {
     width: 100%;
