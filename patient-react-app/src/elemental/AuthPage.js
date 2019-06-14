@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './AuthPage.css';
+import { Avatar } from 'antd';
 
 class AuthPage extends Component {
     render() {
         return(
-            <div className="container">
-                <Link to="/login">Iniciar Sesión</Link>
-                <br></br>
-                <Link to="/">Registrarse con tu cuenta Google</Link>
-                <br></br>
-                <Link to="/register">Crear una cuenta</Link>
-                <br></br>
+            <div className="container4">
+                <p>
+                    <span className="tip"><Link to="/login"><Avatar size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" /> Iniciar Sesión</Link></span>
+                    <br></br><br></br>
+                    <span className="tip"><Link to="/">Registrarse con tu cuenta Google</Link></span>
+                    <br></br><br></br>
+                    <span className="tip"><Link to="/register"><Avatar shape="square" size="small" icon="user" /> Crear una cuenta</Link></span>
+                    <br></br><br></br>
+                </p>
             </div>
         );
     }
