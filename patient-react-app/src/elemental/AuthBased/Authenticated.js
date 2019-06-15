@@ -3,12 +3,13 @@ import { Route, Redirect } from 'react-router-dom';
 import { ACCESS_TOKEN } from '../../constants';
 
 const Authenticated = ({component: Component, isAuthenticated, 
-                        currentUser, loadCurrentUser}) => (
+                        currentUser, loadCurrentUser, logout}) => (
     <Route
         render={(props) =>
             (localStorage.getItem(ACCESS_TOKEN) !== 'accessToken') ?
             <Component currentUser={currentUser} 
-                        loadCurrentUser={loadCurrentUser} 
+                        loadCurrentUser={loadCurrentUser}
+                        logout={logout}
                         {...props}>
             </Component>
             :
