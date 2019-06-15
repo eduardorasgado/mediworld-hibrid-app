@@ -10,7 +10,8 @@ div.profile-container h2, div, svg {
 }
 
 div.profile-container button {
-    margin: 40px;
+    
+    margin-left: 60%;
     
     background-color: transparent;
     color: white;
