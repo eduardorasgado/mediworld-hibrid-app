@@ -17,14 +17,11 @@ export default class Profile extends Component {
     constructor(props){
         super(props);
 
-        //this.props.loadCurrentUser();
-        
-        this.state = {
-            tabs: 5,
-            actualTab: 0
-        }
+        this.closeSession = this.closeSession.bind(this);
+    }
 
-        //this.props.loadCurrentUser();
+    closeSession(e) {
+        this.props.logout();
     }
     render() {
         return (
@@ -38,7 +35,7 @@ export default class Profile extends Component {
                     </Col>
                     <Col span={12}>
                         <div>
-                            {operations}
+                            <Operations action={(event) => this.closeSession(event)}></Operations>
                         </div>
                     </Col>
                 </Row>
@@ -61,7 +58,9 @@ export default class Profile extends Component {
     }
 }
 
-const operations = <Button><Icon type="menu" /> </Button>;
+const Operations = ({action}) => (
+    <Button onClick={action}><Icon type="menu" /></Button>
+);
 
 const Description = ({ term, children, span = 12 }) => (
     <Col span={span}>
