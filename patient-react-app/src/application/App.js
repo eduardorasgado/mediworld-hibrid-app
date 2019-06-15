@@ -37,6 +37,7 @@ class App extends Component {
 
     this.loadCurrentUser = this.loadCurrentUser.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
 
     // configurando las notificaciones
     notification.config({
@@ -98,6 +99,21 @@ class App extends Component {
     this.loadCurrentUser();
   }
 
+  handleLogout(redirectTo="/login", notificationType="success", description="You're successfully logged out.") {
+    localStorage.removeItem(ACCESS_TOKEN);
+
+    this.setState({
+      currentUser: null,
+      isAuthenticated: false
+    });
+
+    this.props.history.push(redirectTo);
+    
+    notification[notificationType]({
+      message: 'Mediworld App',
+      description: 'Has salido exitosamente, no olvides volver para actualizar tus datos médicos',
+    });
+  }
  
 
   render() {
@@ -128,6 +144,7 @@ class App extends Component {
                 isAuthenticated={this.state.isAuthenticated}
                 currentUser={this.state.currentUser}
                 loadCurrentUser={this.loadCurrentUser}
+                logout={this.handleLogout}
               ></Authenticated>
               
               <NotAuthenticated
