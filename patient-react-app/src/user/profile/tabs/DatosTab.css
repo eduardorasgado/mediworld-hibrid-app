@@ -1,0 +1,19 @@
+div.basic-container {
+    margin-top: 80px;
+}
+div.avatar-container {
+    margin-top: 80%;
+    margin-left: 10%;
+}
+button.btn-data-show {
+    border-radius: 22px;
+    /*margin-left: 40%;*/
+    background: transparent;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+button.small-btn {
+    font-size: 0.8em;
+}
