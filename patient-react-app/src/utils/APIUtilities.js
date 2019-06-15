@@ -2,10 +2,36 @@
  * UTILIDADES RESPECTO A LAS PETICIONES O PREVIO/ DESPUES DE LA INTERACCION CON
  * LA API DE LOS USUARIOS/PACIENTES
  */
-import { API_BASE_URL, ACCESS_TOKEN } from '../constants';
+import { API_BASE_URL, API_BASE_PACIENTE_DATA_URL, ACCESS_TOKEN } from '../constants';
 
 /**
+ * funcion para realizar la peticion al cliente de firebase de los datos sensibles del paciente
+ * @param {* Datos sensibles de mi cliente} options 
+ */
+const firebaseRequest = (options) => {
+    const headers = new Headers({
+        'Access-Control-Allow-Origin': '*',
+        'Content-type': 'application/json',
+    });
+    const defaults = {
+        headers
+    }
+    options = Object.assign({}, defaults, options);
+
+    return fetch(options.url, options)
+        .then(response => response.json()
+            .then(json => {
+                if(!response.ok) {
+                    return Promise.reject(json);
+                }
+                return json;
+            })
+        
+        );
+}
+/**
  * funcion para ensamblar el objeto que va a ser enviado por cada peticion a la api
+ * Esta peticion es realizado a la api de perfiles del cliente
  * @param {*} options 
  */
 const request = (options) => {
@@ -76,3 +102,13 @@ export function registerPatient(registerRequest) {
         body: JSON.stringify(registerRequest)
     });
 }
+
+// API DE DATOS SENSIBLES DE PACIENTE
+export function postNewBasicData(newBasicDataRequest) {
+    return firebaseRequest({
+        url: API_BASE_PACIENTE_DATA_URL + '/paciente/basic',
+        method: 'POST',
+        body: JSON.stringify(newBasicDataRequest)
+    });
+}
+
