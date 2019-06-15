@@ -41,16 +41,16 @@ export default class Profile extends Component {
                 </Row>
                 <Tabs>
                     <TabPane tab="Mis datos" key="1">
-                        <DatosTab ></DatosTab>
+                        <DatosTab currentUser={this.props.currentUser}></DatosTab>
                     </TabPane>
                     <TabPane tab="Mi salud" key="2">
-                        <SaludTab></SaludTab>
+                        <SaludTab currentUser={this.props.currentUser}></SaludTab>
                     </TabPane>
                     <TabPane tab="Linea de tiempo" key="3">
-                        <LineaTiempoTab></LineaTiempoTab>
+                        <LineaTiempoTab currentUser={this.props.currentUser}></LineaTiempoTab>
                     </TabPane>
                     <TabPane tab="Emergencia" key="4">
-                        <EmergenciaTab></EmergenciaTab>
+                        <EmergenciaTab currentUser={this.props.currentUser}></EmergenciaTab>
                     </TabPane>
                 </Tabs>
             </div>
@@ -59,7 +59,7 @@ export default class Profile extends Component {
 }
 
 const Operations = ({action}) => (
-    <Button onClick={action}><Icon type="menu" /></Button>
+    <Button className="menu-btn" onClick={action}><Icon type="menu" /></Button>
 );
 
 const Description = ({ term, children, span = 12 }) => (
