@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import './Profile.css';
 import { PageHeader, Tag, Statistic, Row, Col } from 'antd';
-import { Tabs, Button } from 'antd';
+import { Tabs, Button, Icon } from 'antd';
+import DatosTab from './tabs/DatosTab';
+import SaludTab from './tabs/SaludTab';
+import LineaTiempoTab from './tabs/LineaTiempoTab';
+import EmergenciaTab from './tabs/EmergenciaTab';
 const { TabPane } = Tabs;
+
 
 
 /**
@@ -39,13 +44,16 @@ export default class Profile extends Component {
                 </Row>
                 <Tabs>
                     <TabPane tab="Mis datos" key="1">
-                    Content of tab 1
+                        <DatosTab ></DatosTab>
                     </TabPane>
                     <TabPane tab="Mi salud" key="2">
-                    Content of tab 2
+                        <SaludTab></SaludTab>
                     </TabPane>
-                    <TabPane tab="Emergencia" key="3">
-                    Content of tab 3
+                    <TabPane tab="Linea de tiempo" key="3">
+                        <LineaTiempoTab></LineaTiempoTab>
+                    </TabPane>
+                    <TabPane tab="Emergencia" key="4">
+                        <EmergenciaTab></EmergenciaTab>
                     </TabPane>
                 </Tabs>
             </div>
@@ -53,7 +61,7 @@ export default class Profile extends Component {
     }
 }
 
-const operations = <Button>Extra Action</Button>;
+const operations = <Button><Icon type="menu" /> </Button>;
 
 const Description = ({ term, children, span = 12 }) => (
     <Col span={span}>
