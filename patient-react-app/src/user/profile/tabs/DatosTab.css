@@ -25,3 +25,7 @@ button.small-btn {
 .modal-visible .ant-modal-content div{
     color:black;
 }
+
+.modal-visible .ant-modal-content input{
+    border-radius: 20px;
+}
