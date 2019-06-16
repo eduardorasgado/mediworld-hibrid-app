@@ -25,7 +25,18 @@ export default class DatosTab extends Component {
                 paisNacimiento: this.props.currentUser.paisNacimiento
             },
             informacion_personal: {
-
+                email: this.props.currentUser.email,
+                telefono: '',
+                tipo_de_sangre: '',
+                fuma: false,
+                drogas: false,
+                bebidas_alcoholicas: false,
+                num_seguro_social: '',
+                seguro_medico: '',
+                internado_hospitalario: false,
+                cirugia: false,
+                actividad_fisica: false,
+                antecedentes_enfermedades_importantes: false
             },
             informacion_medica_publica: {},
             // visibilidad de los modales
@@ -48,6 +59,8 @@ export default class DatosTab extends Component {
         this.handleOkPersonalModal = this.handleOkPersonalModal.bind(this);
         this.handleCancelPersonalModal = this.handleCancelPersonalModal.bind(this);
         this.showPersonalModal = this.showPersonalModal.bind(this);
+        this.handlePersonalInputChange = this.handlePersonalInputChange.bind(this);
+        
         // otros
         this.getAvailalableCountries = this.getAvailalableCountries.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -142,8 +155,18 @@ export default class DatosTab extends Component {
         this.setState({
             informacion_basica: informacionBasica
         });
+    }
 
-        console.log(this.state.informacion_basica.nombre);
+    handlePersonalInputChange(event) {
+        const target = event.target;
+        let inputName = target.name;
+        const inputValue = target.value;
+        
+        let informacionPersonal = this.state.informacion_personal;
+        informacionPersonal[inputName] = inputValue;
+        this.setState({
+            informacion_personal: informacionPersonal
+        });
     }
 
     /**
@@ -239,6 +262,7 @@ export default class DatosTab extends Component {
                             handleOkPersonalModal={this.handleOkPersonalModal}
                             handleCancelPersonalModal={this.handleCancelPersonalModal}
                             handlePersonalSubmit={this.handlePersonalSubmit}
+                            handlePersonalInputChange={this.handlePersonalInputChange}
                         >
                         </PersonalDataModal>
                     </div>
