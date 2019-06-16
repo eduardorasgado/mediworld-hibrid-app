@@ -13,27 +13,7 @@ const RadioGroup = Radio.Group;
 const {Option} = Select;
 
 export default class BasicDataModal extends Component {
-    constructor(props){
-        super(props);
-
-        this.state = {
-            informacion_basica: {
-                nombre: this.props.currentUser.nombre,
-                apellidos: this.props.currentUser.apellidos,
-                estatura: '',
-                peso: '',
-                genero: this.props.currentUser.genero,
-                fechaNacimiento: this.props.currentUser.fechaNacimiento,
-                paisNacimiento: this.props.currentUser.paisNacimiento
-            },
-            // visibilidad de los modales
-            basicModalVisible: this.props.isVisible,
-            // loading de los modales
-            basicModalLoading: this.props.basicModalLoading,
-        }
-    }
-
-
+    
     render(){
         return (
             <Modal
