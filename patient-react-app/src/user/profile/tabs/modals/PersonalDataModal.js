@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Button, Form } from 'antd';
+import { Modal, Button, Form, Input } from 'antd';
 import '../DatosTab.css';
 const FormItem = Form.Item;
 
@@ -26,7 +26,17 @@ export default class PersonalDataModal extends Component {
             >
                 <Form className="register-form" 
                 onSubmit={() => {this.props.handlePersonalSubmit()}}>
-
+                    <FormItem>
+                        <Input
+                            size="large"
+                            name="email"
+                            autoComplete="off"
+                            placeholder="Correo Electrónico"
+                            value={this.props.informacion_personal.email}
+                            onChange={(event) => this.props.handlePersonalInputChange(event)}
+                        ></Input>
+                    </FormItem>
+                    <FormItem></FormItem>
                 </Form>
             </Modal>
         )
