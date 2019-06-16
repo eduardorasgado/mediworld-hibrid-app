@@ -99,7 +99,7 @@ class App extends Component {
     this.loadCurrentUser();
   }
 
-  handleLogout(redirectTo="/login", notificationType="success", description="You're successfully logged out.") {
+  handleLogout(redirectTo="/login") {
     localStorage.removeItem(ACCESS_TOKEN);
 
     this.setState({
@@ -109,7 +109,7 @@ class App extends Component {
 
     this.props.history.push(redirectTo);
     
-    notification[notificationType]({
+    notification.success({
       message: 'Mediworld App',
       description: 'Has salido exitosamente, no olvides volver para actualizar tus datos médicos',
     });

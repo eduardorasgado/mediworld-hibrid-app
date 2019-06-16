@@ -8,3 +8,7 @@
 .app-container {
   height: 100%;
 }
+
+div.ant-notification div {
+  color: lightseagreen;
+}
