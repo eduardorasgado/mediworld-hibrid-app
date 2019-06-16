@@ -103,6 +103,13 @@ export function registerPatient(registerRequest) {
     });
 }
 
+export function getAllCountries() {
+    return request({
+        url: API_BASE_URL + '/country',
+        method: 'GET',
+    });
+}
+
 // API DE DATOS SENSIBLES DE PACIENTE
 export function postNewBasicData(newBasicDataRequest) {
     return firebaseRequest({
