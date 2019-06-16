@@ -17,3 +17,11 @@ button.btn-data-show {
 button.small-btn {
     font-size: 0.8em;
 }
+
+.modal-visible .ant-modal-content{
+    color: black;
+    background-color: rgba(228, 241, 254, 1)
+}
+.modal-visible .ant-modal-content div{
+    color:black;
+}
