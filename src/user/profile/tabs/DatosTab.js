@@ -77,6 +77,7 @@ export default class DatosTab extends Component {
         this.handleCancelPublicModal = this.handleCancelPublicModal.bind(this);
         this.showPublicModal = this.showPublicModal.bind(this);
         this.handlePublicSubmit = this.handlePublicSubmit.bind(this);
+        this.handlePublicInputChange = this.handlePublicInputChange.bind(this);
 
         // otros
         this.getAvailalableCountries = this.getAvailalableCountries.bind(this);
@@ -210,6 +211,11 @@ export default class DatosTab extends Component {
         this.setState({
             informacion_personal: informacionPersonal
         });
+    }
+
+    handlePublicInputChange(checked, event) {
+        
+        console.log(checked)
     }
 
     filtroNumeroTelefono(informacionPersonal, inputName, inputValue) {
@@ -353,6 +359,7 @@ export default class DatosTab extends Component {
                             handleOkPublicModal={this.handleOkPublicModal}
                             handleCancelPublicModal={this.handleCancelPublicModal}
                             handlePublicSubmit={this.handlePublicSubmit}
+                            handlePublicInputChange={this.handlePublicInputChange}
                         >
 
                         </PublicDataModal>
