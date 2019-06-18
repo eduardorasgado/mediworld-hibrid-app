@@ -65,6 +65,7 @@ export default class DatosTab extends Component {
         this.getAvailalableCountries = this.getAvailalableCountries.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleDateInput = this.handleDateInput.bind(this);
+        this.filtroNumeroTelefono = this.filtroNumeroTelefono.bind(this);
     }
 
     componentDidMount(){
@@ -161,12 +162,27 @@ export default class DatosTab extends Component {
         const target = event.target;
         let inputName = target.name;
         const inputValue = target.value;
-        
+
         let informacionPersonal = this.state.informacion_personal;
-        informacionPersonal[inputName] = inputValue;
+        informacionPersonal = this.filtroNumeroTelefono(informacionPersonal, inputName, inputValue)
         this.setState({
             informacion_personal: informacionPersonal
         });
+        console.log(this.state.informacion_personal.telefono);
+    }
+
+    filtroNumeroTelefono(informacionPersonal, inputName, inputValue) {
+        if(inputName === 'telefono'){
+            // detectando si es un numero puro, tambien se eliminan los espacios
+            // de este filtro, pero se incluyen en el valor asignado al state
+            let numValue = isNaN(inputValue.replace(/\s/g, ''));
+            if(!numValue){
+                informacionPersonal[inputName] = inputValue;
+            }
+        } else {
+            informacionPersonal[inputName] = inputValue;
+        }
+        return informacionPersonal;
     }
 
     /**
