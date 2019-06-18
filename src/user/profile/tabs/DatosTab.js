@@ -60,6 +60,7 @@ export default class DatosTab extends Component {
         this.handleCancelPersonalModal = this.handleCancelPersonalModal.bind(this);
         this.showPersonalModal = this.showPersonalModal.bind(this);
         this.handlePersonalInputChange = this.handlePersonalInputChange.bind(this);
+        this.onPersonalCheckboxChecked = this.onPersonalCheckboxChecked.bind(this);
         
         // otros
         this.getAvailalableCountries = this.getAvailalableCountries.bind(this);
@@ -168,7 +169,6 @@ export default class DatosTab extends Component {
         this.setState({
             informacion_personal: informacionPersonal
         });
-        console.log(this.state.informacion_personal.telefono);
     }
 
     filtroNumeroTelefono(informacionPersonal, inputName, inputValue) {
@@ -185,6 +185,18 @@ export default class DatosTab extends Component {
         return informacionPersonal;
     }
 
+    onPersonalCheckboxChecked(event){
+        const target = event.target;
+        const inputName = target.name;
+        const checked = target.checked;
+        
+        let informacionPersonal = this.state.informacion_personal;
+        informacionPersonal[inputName] = checked;
+        this.setState({
+            informacion_personal: informacionPersonal
+        });
+    }
+
     /**
      * Metodo para majejar exclusivamente el cambio de los campos
      * de tipo select para el cambio de pais
@@ -197,7 +209,6 @@ export default class DatosTab extends Component {
                 informacion_basica: informacionBasica
             });
         }
-        console.log(this.state.informacion_basica.paisNacimiento);
     }
 
     /**
@@ -279,6 +290,7 @@ export default class DatosTab extends Component {
                             handleCancelPersonalModal={this.handleCancelPersonalModal}
                             handlePersonalSubmit={this.handlePersonalSubmit}
                             handlePersonalInputChange={this.handlePersonalInputChange}
+                            onPersonalCheckboxChecked={this.onPersonalCheckboxChecked}
                         >
                         </PersonalDataModal>
                     </div>
