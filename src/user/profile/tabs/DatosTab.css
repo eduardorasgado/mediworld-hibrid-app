@@ -30,3 +30,12 @@ button.small-btn {
 .modal-visible .ant-modal-content input{
     border-radius: 20px;
 }
+
+button.ant-btn.close-session-button {
+    align-content: center;
+    background-color: darkgray;
+}
+
+span.menu-tag {
+    color: cadetblue;
+}
