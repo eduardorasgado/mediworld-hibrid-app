@@ -1,7 +1,14 @@
 .ant-checkbox-wrapper span {
     color: slategrey;
     margin: 0;
-    
+    padding: 0;
     font-size: 12px;
-    line-height: 1px;
+    line-height: 20px;
 }
+
+.ant-checkbox-wrapper span  .question-checkbox {
+    color: slategrey;
+    font-size: 10px;
+    display: block;
+}
+
