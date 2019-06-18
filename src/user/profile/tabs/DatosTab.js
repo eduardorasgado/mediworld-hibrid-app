@@ -157,7 +157,7 @@ export default class DatosTab extends Component {
         });
         setTimeout(()=> {
             this.setState({
-                publiclModalLoading: false,
+                publicModalLoading: false,
                 publicModalVisible: false
             });
         }, 1000);
@@ -214,8 +214,16 @@ export default class DatosTab extends Component {
     }
 
     handlePublicInputChange(checked, event) {
-        
-        console.log(checked)
+
+        const target = event.target;
+        const inputName = target.name;
+        let informacionPublica = this.state.informacion_medica_publica;
+        informacionPublica[inputName] = checked;
+
+        this.setState({
+            informacion_medica_publica: informacionPublica
+        });
+        console.log(this.state.informacion_medica_publica)
     }
 
     filtroNumeroTelefono(informacionPersonal, inputName, inputValue) {
