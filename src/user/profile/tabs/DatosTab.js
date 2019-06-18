@@ -172,7 +172,7 @@ export default class DatosTab extends Component {
     }
 
     filtroNumeroTelefono(informacionPersonal, inputName, inputValue) {
-        if(inputName === 'telefono'){
+        if(inputName === 'telefono' || inputName == 'num_seguro_social'){
             // detectando si es un numero puro, tambien se eliminan los espacios
             // de este filtro, pero se incluyen en el valor asignado al state
             let numValue = isNaN(inputValue.replace(/\s/g, ''));
