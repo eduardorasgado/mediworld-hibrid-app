@@ -5,6 +5,7 @@ import './DatosTab.css';
 
 import BasicDataModal from './modals/BasicDataModal';
 import PersonalDataModal from './modals/PersonalDataModal';
+import PublicDataModal from './modals/PublicDataModal';
 
 import 'moment/locale/es';
 
@@ -38,13 +39,22 @@ export default class DatosTab extends Component {
                 actividad_fisica: false,
                 antecedentes_enfermedades_importantes: false
             },
-            informacion_medica_publica: {},
+            informacion_medica_publica: {
+                alergias: false,
+                email: false,
+                nombre: false,
+                pais: false,
+                telefono: false,
+                tipo_sangre: false
+            },
             // visibilidad de los modales
             basicModalVisible: false,
             personalModalVisible:false,
+            publicModalVisible: false,
             // loading de los modales
             basicModalLoading: false,
             personalModalLoading:false,
+            publicModalLoading: false,
             availableCountries: []
             
         }
@@ -62,6 +72,12 @@ export default class DatosTab extends Component {
         this.handlePersonalInputChange = this.handlePersonalInputChange.bind(this);
         this.onPersonalCheckboxChecked = this.onPersonalCheckboxChecked.bind(this);
         
+        // public modal
+        this.handleOkPublicModal = this.handleOkPublicModal.bind(this);
+        this.handleCancelPublicModal = this.handleCancelPublicModal.bind(this);
+        this.showPublicModal = this.showPublicModal.bind(this);
+        this.handlePublicSubmit = this.handlePublicSubmit.bind(this);
+
         // otros
         this.getAvailalableCountries = this.getAvailalableCountries.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -100,6 +116,12 @@ export default class DatosTab extends Component {
         });
     }
 
+    showPublicModal() {
+        this.setState({
+            publicModalVisible: true
+        });
+    }
+
     handleOkBasicModal() {
         this.setState({
             basicModalLoading: true
@@ -128,6 +150,19 @@ export default class DatosTab extends Component {
         this.handlePersonalSubmit();
     }
 
+    handleOkPublicModal() {
+        this.setState({
+            publicModalLoading: true
+        });
+        setTimeout(()=> {
+            this.setState({
+                publiclModalLoading: false,
+                publicModalVisible: false
+            });
+        }, 1000);
+        this.handlePublicSubmit()
+    }
+
     handleCancelBasicModal() {
         this.setState({
             basicModalVisible:false
@@ -141,6 +176,12 @@ export default class DatosTab extends Component {
     handleCancelPersonalModal(){
         this.setState({
             personalModalVisible: false
+        });
+    }
+
+    handleCancelPublicModal() {
+        this.setState({
+            publicModalVisible: false
         });
     }
 
@@ -235,6 +276,17 @@ export default class DatosTab extends Component {
         });
     }
 
+    handlePublicSubmit() {
+        // TODO: Aqui se hace la peticion a la api de datos sensibles
+        // para guardar los datos
+        console.log("public submit");
+
+        notification.success({
+            message:'Datos públicos',
+            description: 'Tus datos públicos han sido actualizados'
+        });
+    }
+
     handleDateInput(date, format) {
         let dateVal = ''
         if(date) {
@@ -265,7 +317,8 @@ export default class DatosTab extends Component {
                         <Button onClick={() => {this.showPersonalModal()}}
                         className="btn-data-show">Información personal <Icon type="right" /></Button>
                         
-                        <Button className="btn-data-show small-btn">Información médica pública <Icon type="right" /></Button>
+                        <Button onClick={() => {this.showPublicModal()}}
+                        className="btn-data-show small-btn">Información médica pública <Icon type="right" /></Button>
 
                         <BasicDataModal
                             currentUser={this.props.currentUser}
@@ -293,6 +346,16 @@ export default class DatosTab extends Component {
                             onPersonalCheckboxChecked={this.onPersonalCheckboxChecked}
                         >
                         </PersonalDataModal>
+
+                        <PublicDataModal
+                            {...this.state}
+
+                            handleOkPublicModal={this.handleOkPublicModal}
+                            handleCancelPublicModal={this.handleCancelPublicModal}
+                            handlePublicSubmit={this.handlePublicSubmit}
+                        >
+
+                        </PublicDataModal>
                     </div>
                 </Col>
             </Row>
