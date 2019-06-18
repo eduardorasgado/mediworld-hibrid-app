@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Modal, Button, Form, Input } from 'antd';
+import { Modal, Button, Form, Input, Checkbox, Row, Col } from 'antd';
 import '../DatosTab.css';
+import './PersonalDataModal.css';
 const FormItem = Form.Item;
 
 export default class PersonalDataModal extends Component {
@@ -55,6 +56,33 @@ export default class PersonalDataModal extends Component {
                             value={this.props.informacion_personal.tipo_de_sangre}
                             onChange={(event) => this.props.handlePersonalInputChange(event)}
                         ></Input>
+                    </FormItem>
+                    <FormItem>
+                        <Row>
+                            <Col span={6}>
+                                <Checkbox 
+                                    onChange={(event) => {this.props.onPersonalCheckboxChecked(event)}}
+                                    name="fuma"
+                                    value={this.props.informacion_personal.fuma}>Fuma
+                                </Checkbox>
+                            </Col>
+                            <Col span={6}>
+                                <Checkbox 
+                                    onChange={(event) => {this.props.onPersonalCheckboxChecked(event)}}
+                                    name="drogas"
+                                    value={this.props.informacion_personal.num_seguro_social}>
+                                        Drogas
+                                </Checkbox>
+                            </Col>
+                            <Col span={12}>
+                                <Checkbox
+                                    onChange={(event) => {this.props.onPersonalCheckboxChecked(event)}}
+                                    name="bebidas_alcoholicas"
+                                    value={this.props.informacion_personal.bebidas_alcoholicas}>
+                                        Bebidas alcohólicas
+                                </Checkbox>
+                            </Col>
+                        </Row>                        
                     </FormItem>
                 </Form>
             </Modal>
