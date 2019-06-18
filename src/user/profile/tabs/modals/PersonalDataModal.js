@@ -36,7 +36,26 @@ export default class PersonalDataModal extends Component {
                             onChange={(event) => this.props.handlePersonalInputChange(event)}
                         ></Input>
                     </FormItem>
-                    <FormItem></FormItem>
+                    <FormItem>
+                        <Input
+                            size="large"
+                            name="telefono"
+                            autoComplete="off"
+                            placeholder="Telefono"
+                            value={this.props.informacion_personal.telefono}
+                            onChange={(event) => this.props.handlePersonalInputChange(event)}
+                        ></Input>
+                    </FormItem>
+                    <FormItem>
+                        <Input
+                            size="large"
+                            name="tipo_de_sangre"
+                            autoComplete="off"
+                            placeholder="Tipo de sangre"
+                            value={this.props.informacion_personal.tipo_de_sangre}
+                            onChange={(event) => this.props.handlePersonalInputChange(event)}
+                        ></Input>
+                    </FormItem>
                 </Form>
             </Modal>
         )
