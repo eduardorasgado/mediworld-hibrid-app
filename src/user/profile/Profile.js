@@ -389,7 +389,10 @@ export default class Profile extends Component {
                         ></DatosTab>
                     </TabPane>
                     <TabPane tab="Mi salud" key="2">
-                        <SaludTab currentUser={this.props.currentUser}></SaludTab>
+                        <SaludTab 
+                            {...this.state}
+                            currentUser={this.props.currentUser}>
+                        </SaludTab>
                     </TabPane>
                     <TabPane tab="Linea de tiempo" key="3">
                         <LineaTiempoTab currentUser={this.props.currentUser}></LineaTiempoTab>
