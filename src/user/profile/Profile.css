@@ -1,6 +1,6 @@
 div.profile-container {
     color: white;
-    height: 44em;
+    height: 45em;
     position: relative;
 }
 
@@ -12,7 +12,7 @@ div.profile-container h2, div, svg {
 div.profile-container .menu-btn {
     
     margin-left: 60%;
-    
+    margin-top: 20%;
     background-color: transparent;
     color: white;
     
@@ -20,4 +20,13 @@ div.profile-container .menu-btn {
 
 div.profile-container .profile-header {
     
+}
+
+p.notification-profile {
+    background-color: #757887;
+    color: white;
+    font-weight: 500;
+    border-radius: 5px;
+    padding-left: 5%;
+    border: solid 2px gray;
 }

@@ -344,20 +344,31 @@ export default class Profile extends Component {
     render() {
         return (
             <div className="profile-container">
+                <div>
+                    <Row>
+                        <Col span={7}></Col>
+                        <Col span={10}>
+                            <img style={{width:120}} alt="Loading..." src={process.env.PUBLIC_URL+'/logo.png'}></img>
+                        </Col>
+                        <Col span={4}>
+                            <div>
+                                <Button className="menu-btn" 
+                                    onClick={(event) => this.showMenuModal()}
+                                ><Icon type="menu" /></Button>
+                            </div>
+                        </Col>
+                    </Row>
+                    
+                </div>
                 <Row className="profile-header">
-                    <Col span={12}>
+                    <Col span={20}>
                         <h2>
                             Bienvenid@ { this.props.currentUser.nombre } {this.props.currentUser.apellidos}
                         </h2>
-                        <p>Tienes nuevas actualizaciones en tu linea de tiempo</p>
+                        <p className="notification-profile">Tienes nuevas actualizaciones en tu linea de tiempo</p>
                     </Col>
-                    <Col span={12}>
-                        <div>
-                            <Button className="menu-btn" 
-                                onClick={(event) => this.showMenuModal()}
-                            ><Icon type="menu" /></Button>
-                        </div>
-                    </Col>
+                    <Col span={4}></Col>
+
                 </Row>
                 <Tabs>
                     <TabPane tab="Mis datos" key="1">
