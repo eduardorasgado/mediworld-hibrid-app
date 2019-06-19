@@ -102,8 +102,8 @@ export default class AntecedentesModal extends Component {
                         </FormItem>
                         <div className="tag-hub">
                             {
-                                this.props.alergias.map((alergia,key) => (
-                                    <Tag key={key} color="blue">{alergia}</Tag>
+                                this.props.antecedentes.map((antecedente,key) => (
+                                    <Tag key={key} color="blue">{antecedente.familiar} | {antecedente.patologia}</Tag>
                                     
                                 ))
                             }
