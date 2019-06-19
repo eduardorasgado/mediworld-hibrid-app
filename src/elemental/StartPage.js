@@ -7,7 +7,9 @@ const StartPage = () => {
         <div className="container4">
             
                 <h1>
-                    <Link to="/start-over-here">Mediworld</Link>
+                    <Link to="/start-over-here">
+                        <img style={{width:180}} alt="Loading..." src={process.env.PUBLIC_URL+'/logo.png'}></img>
+                    </Link>
                 </h1>
         
         </div>            
