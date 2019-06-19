@@ -8,7 +8,7 @@ class AuthPage extends Component {
         return(
             <div className="container4">
                 <p>
-                    <span className="tip"><Link to="/login"><Avatar size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" /> Iniciar Sesión</Link></span>
+                    <span className="tip"><Link to="/login">Iniciar Sesión</Link></span>
                     <br></br><br></br>
                     <span className="tip"><Link to="/"><span className="tiptext">Registrarse con tu cuenta Google</span></Link></span>
                     <br></br><br></br>

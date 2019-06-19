@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Modal, Form, Button, Row, Col, Switch } from 'antd';
 import './tabs/DatosTab.css';
 const FormItem = Form.Item;
