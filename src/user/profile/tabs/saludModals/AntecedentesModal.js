@@ -10,7 +10,7 @@ export default class AntecedentesModal extends Component {
             <Modal
                 className="modal-visible"
                 visible={this.props.antecedentesModalVisible}
-                title="Datos Personales"
+                title="Mis Antecedentes"
                 onOk={this.props.handleOkAntecedentesModal}
                 onCancel={this.props.handleCancelAntecedentesModal}
                 footer={[
