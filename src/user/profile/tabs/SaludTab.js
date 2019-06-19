@@ -12,8 +12,8 @@ export default class SaludTab extends Component {
         super(props);
 
         this.state = {
-            antecedentes: {},
-            alergias: {},
+            antecedentes: [],
+            alergias: [],
             medicamentosModalVisible: false,
             alergiasModalVisible: false,
             antecedentesModalVisible: false,
@@ -24,6 +24,10 @@ export default class SaludTab extends Component {
             estudiosModalLoading: false
         }
 
+        // Form  Related
+        this.handleAlergiaInput = this.handleAlergiaInput.bind(this);
+
+        // Modal related
         this.antecedentesShowModal = this.antecedentesShowModal.bind(this);
         this.alergiasShowModal = this.alergiasShowModal.bind(this);
         this.estudiosShowModal = this.estudiosShowModal.bind(this);
@@ -43,6 +47,20 @@ export default class SaludTab extends Component {
 
     }
 
+    // FORM RELATED
+    handleAlergiaInput(event) {
+        const inputValue = event.value;
+
+        let alergiasNow = this.state.alergias;
+        alergiasNow.push(inputValue);
+        this.setState({
+            alergias: alergiasNow
+        });
+        console.log(this.state.alergias);
+    }
+
+
+    // MODAL RELATED
     antecedentesShowModal() {
         this.setState({
             antecedentesModalVisible: true
@@ -203,6 +221,7 @@ export default class SaludTab extends Component {
                         </Button>
 
                         <AntecedentesModal
+                            currentUser={this.props.currentUser}
                             {...this.state}
                             handleOkAntecedentesModal={this.handleOkAntecedentesModal}
                             handleCancelAntecedentesModal={this.handleCancelAntecedentesModal}
@@ -211,17 +230,21 @@ export default class SaludTab extends Component {
                         </AntecedentesModal>
 
                         <AlergiasModal
+                            currentUser={this.props.currentUser}
                             {...this.state}
                             handleOkAlergiasModal={this.handleOkAlergiasModal}
                             handleCancelAlergiasModal={this.handleCancelAlergiasModal}
+                            handleAlergiaInput={this.handleAlergiaInput}
                         >
                         </AlergiasModal>
                         <RecetasModal
+                            currentUser={this.props.currentUser}
                             {...this.state}
                             handleOkRecetasModal={this.handleOkRecetasModal}
                             handleCancelRecetasModal={this.handleCancelRecetasModal}
                         ></RecetasModal>
                         <EstudiosModal
+                            currentUser={this.props.currentUser}
                             {...this.state}
                             handleOkEstudiosModal={this.handleOkEstudiosModal}
                             handleCancelEstudiosModal={this.handleCancelEstudiosModal}
