@@ -26,6 +26,7 @@ export default class SaludTab extends Component {
 
         // Form  Related
         this.handleAlergiaInput = this.handleAlergiaInput.bind(this);
+        this.handleAntecedenteInput =this.handleAntecedenteInput.bind(this);
 
         // Modal related
         this.antecedentesShowModal = this.antecedentesShowModal.bind(this);
@@ -59,6 +60,15 @@ export default class SaludTab extends Component {
             });
         }
         console.log(this.state.alergias);
+    }
+
+    handleAntecedenteInput(antecedente) {
+        let antecedentesNow = this.state.antecedentes;
+        antecedentesNow.push(antecedente);
+        this.setState({
+            antecedentes: antecedentesNow
+        });
+        console.log(this.state.antecedentes);
     }
 
 
@@ -227,7 +237,7 @@ export default class SaludTab extends Component {
                             {...this.state}
                             handleOkAntecedentesModal={this.handleOkAntecedentesModal}
                             handleCancelAntecedentesModal={this.handleCancelAntecedentesModal}
-
+                            handleAntecedenteInput={this.handleAntecedenteInput}
                         >                            
                         </AntecedentesModal>
 

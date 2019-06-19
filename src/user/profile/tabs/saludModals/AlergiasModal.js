@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Modal, Button, Form, Input, Icon, Row, Col, Tag } from 'antd';
 import './ListModal.css';
+import '../DatosTab.css';
 const FormItem = Form.Item;
 
 export default class AlergiasModal extends Component {
