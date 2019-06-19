@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Row, Col, Icon, Button, notification } from 'antd';
 import './DatosTab.css';
 import AntecedentesModal from './saludModals/AntecedentesModal';
+import AlergiasModal from './saludModals/AlergiasModal';
+import RecetasModal from './saludModals/RecetasModal';
+import EstudiosModal from './saludModals/EstudiosModal';
 
 export default class SaludTab extends Component {
 
@@ -182,7 +185,7 @@ export default class SaludTab extends Component {
                         </Button>
                         <Button
                             className="btn-data-show"
-                            onClick={() => this.alergiaShowModal()}
+                            onClick={() => this.alergiasShowModal()}
                         >
                             Mis alergias <Icon type="right" />
                         </Button>
@@ -206,6 +209,23 @@ export default class SaludTab extends Component {
 
                         >                            
                         </AntecedentesModal>
+
+                        <AlergiasModal
+                            {...this.state}
+                            handleOkAlergiasModal={this.handleOkAlergiasModal}
+                            handleCancelAlergiasModal={this.handleCancelAlergiasModal}
+                        >
+                        </AlergiasModal>
+                        <RecetasModal
+                            {...this.state}
+                            handleOkRecetasModal={this.handleOkRecetasModal}
+                            handleCancelRecetasModal={this.handleCancelRecetasModal}
+                        ></RecetasModal>
+                        <EstudiosModal
+                            {...this.state}
+                            handleOkEstudiosModal={this.handleOkEstudiosModal}
+                            handleCancelEstudiosModal={this.handleCancelEstudiosModal}
+                        ></EstudiosModal>
                     </div>
                 </Col>
             </Row>
