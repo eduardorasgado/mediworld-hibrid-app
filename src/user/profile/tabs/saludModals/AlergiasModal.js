@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Button, Form, Input, Icon, Row, Col } from 'antd';
+import { Modal, Button, Form, Input, Icon, Row, Col, Tag } from 'antd';
 import './ListModal.css';
 const FormItem = Form.Item;
 
@@ -73,6 +73,14 @@ export default class AlergiasModal extends Component {
                                 </Col>
                             </Row>
                         </FormItem>
+                        <div className="tag-hub">
+                            {
+                                this.props.alergias.map((alergia,key) => (
+                                    <Tag key={key} color="blue">{alergia}</Tag>
+                                    
+                                ))
+                            }
+                        </div>
                     </Form>
                 </div>
             </Modal>

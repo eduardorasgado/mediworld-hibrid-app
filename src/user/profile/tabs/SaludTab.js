@@ -51,11 +51,13 @@ export default class SaludTab extends Component {
     handleAlergiaInput(event) {
         const inputValue = event.value;
 
-        let alergiasNow = this.state.alergias;
-        alergiasNow.push(inputValue);
-        this.setState({
-            alergias: alergiasNow
-        });
+        if(inputValue !== ''){
+            let alergiasNow = this.state.alergias;
+            alergiasNow.push(inputValue);
+            this.setState({
+                alergias: alergiasNow
+            });
+        }
         console.log(this.state.alergias);
     }
 
