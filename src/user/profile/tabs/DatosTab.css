@@ -39,3 +39,11 @@ button.ant-btn.close-session-button {
 span.menu-tag {
     color: cadetblue;
 }
+
+input.avatarInput {
+    margin-top: 6px;
+    border-radius: 20px;
+    background: transparent;
+    border: none;
+    color: transparent;
+}

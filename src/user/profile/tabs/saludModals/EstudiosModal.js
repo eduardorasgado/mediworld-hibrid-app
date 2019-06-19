@@ -16,8 +16,10 @@ export default class EstudiosModal extends Component {
         }
 
         this.imageUpload = this.imageUpload.bind(this);
-        this.updateAllRecetasAvailable = this.updateAllRecetasAvailable.bind(this);
+        this.updateAllRecetasAvailable = this.updateAllRecetasAvailable.bind(this);    
+    }
 
+    componentDidMount() {
         this.updateAllRecetasAvailable();
     }
 

@@ -46,10 +46,6 @@ class App extends Component {
       // segundos
       duration: 3
     });
-
-    if(localStorage.getItem(ACCESS_TOKEN) !== 'accesToken'){
-      this.loadCurrentUser();
-    }
   }
 
   /**
@@ -92,7 +88,9 @@ class App extends Component {
 
   // CICLO DE COMPONENTES
   componentDidMount() {
-    this.loadCurrentUser();
+    if(localStorage.getItem(ACCESS_TOKEN) !== 'accesToken'){
+      this.loadCurrentUser();
+    }
   }
 
   componentWillMount() {
