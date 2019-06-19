@@ -25,7 +25,7 @@ export default class MenuModal extends Component {
                                 <span className="menu-tag">Usuario:</span>
                             </Col>
                             <Col span={16}>
-                                {this.props.currentUser.nombre}
+                                {this.props.currentUser.username}
                             </Col>
                         </Row>
                     </FormItem>
